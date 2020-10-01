@@ -55,12 +55,12 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextTextPersonName20"
+        android:id="@+id/editTextEmail"
         android:layout_width="266dp"
         android:layout_height="49dp"
         android:ems="10"
         android:hint="Name"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -70,12 +70,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName21"
+        android:id="@+id/editTextPass"
         android:layout_width="266dp"
         android:layout_height="49dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textAllCaps="true"
         android:textColor="#000000"
         android:textStyle="bold"

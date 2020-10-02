@@ -14,9 +14,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
-    private Button button;
+    private Button button,logBtn;
     EditText emailId,password;
     FirebaseAuth mFirebaseAuth;
     @Override
@@ -36,19 +37,40 @@ public class login extends AppCompatActivity {
             }
         });
 
+        logBtn = (Button) findViewById(R.id.btn_login);
+
+        logBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fLogin();
+            }
+        });
+
+
+    }
+
+
+    public boolean validatePassAndEmail(){
+        String email = emailId.getText().toString();
+        String pass = password.getText().toString();
+
+        if(email.isEmpty()){
+            emailId.setError("Please provide a email id");
+            emailId.requestFocus();
+            return false;
+        }else if(pass.isEmpty()){
+            password.setError("Please enter a password");
+            password.requestFocus();
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public  void fRegister(){
-                String email = emailId.getText().toString();
-                String pass = password.getText().toString();
-
-                if(email.isEmpty()){
-                    emailId.setError("Please provide a email id");
-                    emailId.requestFocus();
-                }else if(pass.isEmpty()){
-                    password.setError("Please enter a password");
-                    password.requestFocus();
-                }else{
+            String email = emailId.getText().toString();
+            String pass = password.getText().toString();
+                if(validatePassAndEmail()){
                     mFirebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -73,4 +95,39 @@ public class login extends AppCompatActivity {
 
 
     }
+
+
+    public void fLogin(){
+
+        String email = emailId.getText().toString();
+        String pass = password.getText().toString();
+        if(validatePassAndEmail()){
+            mFirebaseAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+//                            progressBar.setVisibility(View.GONE);
+
+                            openRegister();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+//                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+        }
+
+
+    }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+//
+//    }
 }

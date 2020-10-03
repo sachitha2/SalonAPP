@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,16 +22,21 @@ public class addcustomer extends AppCompatActivity {
     private Button button;
     private  String userId;
     EditText eEmail,ePass,eName,ePhone;
+    FirebaseAuth mFirebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcustomer);
 
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
         eName = findViewById(R.id.editTextTextPersonName);
         ePhone = findViewById(R.id.editTextTextPersonName4);
         eEmail = findViewById(R.id.eTxtEmail);
         ePass = findViewById(R.id.eTxtPass);
-
+        eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
+        eEmail.setEnabled(false);
         button = (Button) findViewById(R.id.btn_sub1);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +47,8 @@ public class addcustomer extends AppCompatActivity {
                 if(validateData()){
                     Toast.makeText(addcustomer.this,"data valid",Toast.LENGTH_LONG).show();
 
+                      //add customer
+                        addData();
                 }
             }
         });
@@ -54,7 +62,7 @@ public class addcustomer extends AppCompatActivity {
         Log.d("Add Customer ","user id is "+userId);
 
     }
-    public void openCus1(){
+    public void openDashBoard(){
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
@@ -98,7 +106,7 @@ public class addcustomer extends AppCompatActivity {
         }
     }
 
-    public Customer getData(){
+    public void addData(){
         String name;
         String phone;
         String email;
@@ -106,14 +114,27 @@ public class addcustomer extends AppCompatActivity {
 
         String password;
 
-        name = eName.toString();
-        phone = ePhone.toString();
-        email = eEmail.toString();
-        password = ePass.toString();
+        name = eName.getText().toString();
+        phone = ePhone.getText().toString();
+        email = eEmail.getText().toString();
+        password = ePass.getText().toString();
         gender = true;
 
         Customer customer = new Customer(name,phone,email,gender,password);
 
-        return customer;
+
+        mFDb.child("customer").child(userId).setValue(customer);
+        mFDb.child("userType").child(userId).setValue(customer);
+        emptyInputs();
+        openDashBoard();
+
+    }
+
+    public  void emptyInputs(){
+        eName.setText("");
+        ePhone.setText("");
+        eEmail.setText("");
+        ePass.setText("");
     }
 }
+

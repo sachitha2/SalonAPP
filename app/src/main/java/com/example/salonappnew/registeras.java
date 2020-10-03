@@ -31,6 +31,9 @@ public class registeras extends AppCompatActivity {
         button = (Button) findViewById(R.id.btn_cus);
         button1 = (Button) findViewById(R.id.btn_com);
 
+        //find user data is available and if available intent to dashboard
+        //TODO
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

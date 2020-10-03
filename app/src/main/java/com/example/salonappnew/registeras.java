@@ -35,14 +35,14 @@ public class registeras extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openCus();
-                addUser();
+
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCom();
-                addUser();
+
             }
         });
 
@@ -53,7 +53,7 @@ public class registeras extends AppCompatActivity {
         userId = mFDb.push().getKey();
     }
 
-    public void addUser(){
+    public void addCustomer(){
         Customer customer = new Customer("hevecdfc","venncd","erfe",false,"pass");
         mFDb.child("customer").child(userId).setValue(customer);
     }

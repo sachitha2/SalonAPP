@@ -8,7 +8,7 @@ public class Company {
     String password;
 
     public Company(){
-        
+
     }
 
     public Company(String companyName, String address, String phone, String email, String password) {

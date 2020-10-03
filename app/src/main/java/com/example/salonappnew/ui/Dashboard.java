@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
@@ -28,6 +29,9 @@ public class Dashboard extends AppCompatActivity {
     CardView products;
     CardView profile;
     Button logout;
+
+    GridLayout customer;
+    GridLayout salon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,14 @@ public class Dashboard extends AppCompatActivity {
         newsFeed = findViewById(R.id.newsFeed);
         products = findViewById(R.id.products);
         profile = findViewById(R.id.profile);
+
+        customer = findViewById(R.id.customer);
+        salon = findViewById(R.id.salon);
+
+        customer.setVisibility(View.GONE);
+        salon.setVisibility(View.VISIBLE);
+
+
 
         logout = findViewById(R.id.btnLogout);
 

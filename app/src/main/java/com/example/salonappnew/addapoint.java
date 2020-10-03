@@ -17,6 +17,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.example.salonappnew.models.Appointment;
+import com.example.salonappnew.models.Customer;
+import com.example.salonappnew.models.UserType;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,10 +34,18 @@ import java.util.Objects;
 
 public class addapoint extends AppCompatActivity {
 
-    private Button btn;
+    private DatabaseReference mFDb;
+    private FirebaseDatabase mFirebaseInstant;
+
+    FirebaseAuth mFirebaseAuth;
+
+    private Button btn,addAppoint;
     Button btn_date;
     TextView tvTimer2;
     int t2Hour,t2Minute;
+    String date = null, time = null;
+
+    private  String userId;
 
     private static final String TAG = "addapoint";
 
@@ -41,12 +57,35 @@ public class addapoint extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addapoint);
 
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        mFirebaseInstant = FirebaseDatabase.getInstance();
+        mFDb = mFirebaseInstant.getReference("users");
+
+
+        userId = mFDb.push().getKey();
+
+
         btn = (Button) findViewById(R.id.btn_sln);
+        addAppoint = findViewById(R.id.btnAddAppointment);
+
+        addAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(validateData()){
+                    addData();
+                }else{
+
+                }
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                opensln();
+                //TODO SELECT salon
             }
         });
 
@@ -74,7 +113,7 @@ public class addapoint extends AppCompatActivity {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: date: mm/dd/yyy: "+ month + "/" + day + "/" +year);
 
-                String date = month + "/" + day + "/" + year;
+                date = month + "/" + day + "/" + year;
                 mDisplayDate.setText(date);
             }
         };
@@ -91,7 +130,7 @@ public class addapoint extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 t2Hour = hourOfDay;
                                 t2Minute = minute;
-                                String time = t2Hour +  ":" + t2Minute;
+                                time = t2Hour +  ":" + t2Minute;
                                 @SuppressLint("SimpleDateFormat") SimpleDateFormat f24Hours = new SimpleDateFormat(
                                         "HH:mm"
                                 );
@@ -122,6 +161,32 @@ public class addapoint extends AppCompatActivity {
     public void opensln(){
         Intent intent = new Intent(this, selectsalon.class);
         startActivity(intent);
+    }
+
+    public void addData(){
+
+        Appointment appointment = new Appointment("2588","salonnn@gmail.com",date,time,"cId",mFirebaseAuth.getCurrentUser().getEmail());
+
+        mFDb.child("appointment").child(userId).setValue(appointment);
+
+    }
+
+    public boolean validateData(){
+        if(date == null){
+            Log.d("Data","Date is null");
+            Toast toast= Toast. makeText(addapoint.this,"Please Select a Date",Toast. LENGTH_SHORT);
+            toast. show();
+            return false;
+        }else if(time == null){
+            Log.d("Data","Time is null");
+            Toast toast= Toast. makeText(addapoint.this,"Please Select a Time",Toast. LENGTH_SHORT);
+            toast. show();
+            return false;
+        }else{
+            return true;
+        }
+
+
     }
 
 }

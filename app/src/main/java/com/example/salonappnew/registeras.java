@@ -32,7 +32,7 @@ public class registeras extends AppCompatActivity {
 
     private  String userId;
 
-//    EditText user,email;
+//    EditText user,email
 
 
     @Override
@@ -209,5 +209,5 @@ public class registeras extends AppCompatActivity {
     }
 
 
-//TODO need to add loader 
+//TODO need to add loader
 }

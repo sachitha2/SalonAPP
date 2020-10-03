@@ -157,9 +157,9 @@ public class login extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Checking User Availability...");
         progressDialog.show();
-        String queryText = "sam@gmail.com";
-        Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
-                .endAt(queryText+"\uf8ff");
+        Log.d("Data","Current user"+mFirebaseAuth.getCurrentUser().getEmail());
+        Query data = mFDb.child("userType").orderByChild("email").startAt(mFirebaseAuth.getCurrentUser().getEmail().toString())
+                .endAt(mFirebaseAuth.getCurrentUser().getEmail()+"\uf8ff");
 
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

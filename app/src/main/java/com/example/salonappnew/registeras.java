@@ -65,7 +65,7 @@ public class registeras extends AppCompatActivity {
         userId = mFDb.push().getKey();
 
         //find user data is available and if available intent to dashboard
-//        searchFireStore();
+        searchFireStore();
         //TODO
     }
 
@@ -92,7 +92,7 @@ public class registeras extends AppCompatActivity {
     private void searchFireStore(){
             //s
 
-        String queryText = "chata@gmail.com";
+        String queryText = "sam@gmail.com";
           Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
                   .endAt(queryText+"\uf8ff");
 
@@ -100,8 +100,9 @@ public class registeras extends AppCompatActivity {
           data.addValueEventListener(new ValueEventListener() {
               @Override
               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                  openDashBoard();
+                  UserType post = dataSnapshot.getValue(UserType.class);
+                  Log.d("Data","Data-"+dataSnapshot.getValue());
+                  Log.d("Data","Data-"+post.getType());
 
               }
 

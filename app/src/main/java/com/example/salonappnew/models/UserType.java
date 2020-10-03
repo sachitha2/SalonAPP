@@ -1,8 +1,19 @@
 package com.example.salonappnew.models;
 
 public class UserType {
-    String email;
-    String type;
+    public String email;
+    public String type;
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
 
     public UserType(String email, String type) {
         this.email = email;
@@ -20,4 +31,6 @@ public class UserType {
     public String getType() {
         return type;
     }
+
+
 }

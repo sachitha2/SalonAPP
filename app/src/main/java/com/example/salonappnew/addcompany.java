@@ -124,7 +124,7 @@
         mFDb.child("salon").child(userId).setValue(company);
         mFDb.child("userType").child(userId).setValue(userType);
 //        mFDb.child(company.getPhone()).child(userId).setValue(userType);
-//        emptyInputs();
+        emptyInputs();
         openDashBoard();
     }
 
@@ -174,5 +174,13 @@
      public void openDashBoard(){
          Intent intent = new Intent(this, Dashboard.class);
          startActivity(intent);
+     }
+
+     public  void emptyInputs(){
+         eName.setText("");
+         ePhone.setText("");
+         eEmail.setText("");
+         ePass.setText("");
+         eAddress.setText("");
      }
  }

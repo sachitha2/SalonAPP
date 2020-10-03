@@ -6,9 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.salonappnew.models.Customer;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class registeras extends AppCompatActivity {
     private Button button, button1;
+    private DatabaseReference mFDb;
+    private FirebaseDatabase mFirebaseInstant;
+
+
+    private  String userId;
+
+//    EditText user,email;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +35,35 @@ public class registeras extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openCus();
+                addUser();
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCom();
+                addUser();
             }
         });
+
+        mFirebaseInstant = FirebaseDatabase.getInstance();
+        mFDb = mFirebaseInstant.getReference("users");
+
+
+        userId = mFDb.push().getKey();
+    }
+
+    public void addUser(){
+        Customer customer = new Customer("hevecdfc","venncd","erfe",false,"pass");
+        mFDb.child("customer").child(userId).setValue(customer);
+    }
+    public  void updateCustomer(){
+        mFDb.child("customer").child(userId).child("name").setValue("chata1");
+        mFDb.child("customer").child(userId).child("phone").setValue("07155");
+        mFDb.child("customer").child(userId).child("email").setValue("chata@chata.com");
+        mFDb.child("customer").child(userId).child("gender").setValue(false);
+        mFDb.child("customer").child(userId).child("password").setValue("password is me");
+
     }
     public void openCus(){
         Intent intent = new Intent(this, addcustomer.class);

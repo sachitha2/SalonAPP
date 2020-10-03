@@ -68,4 +68,10 @@
          Intent intent = new Intent(this, home.class);
          startActivity(intent);
      }
+
+
+     //firebase
+
+
+     //end of firebase methods
  }

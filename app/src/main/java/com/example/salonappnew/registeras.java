@@ -1,5 +1,6 @@
 package com.example.salonappnew;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,8 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.salonappnew.models.Customer;
+import com.example.salonappnew.models.UserType;
+import com.example.salonappnew.ui.Dashboard;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class registeras extends AppCompatActivity {
     private Button button, button1;
@@ -32,9 +41,7 @@ public class registeras extends AppCompatActivity {
         button = (Button) findViewById(R.id.btn_cus);
         button1 = (Button) findViewById(R.id.btn_com);
 
-        //find user data is available and if available intent to dashboard
 
-        //TODO
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +63,10 @@ public class registeras extends AppCompatActivity {
 
 
         userId = mFDb.push().getKey();
+
+        //find user data is available and if available intent to dashboard
+//        searchFireStore();
+        //TODO
     }
 
     public void addCustomer(){
@@ -79,5 +90,36 @@ public class registeras extends AppCompatActivity {
         startActivity(intent);
     }
     private void searchFireStore(){
+            //s
+
+        String queryText = "chata@gmail.com";
+          Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
+                  .endAt(queryText+"\uf8ff");
+
+
+          data.addValueEventListener(new ValueEventListener() {
+              @Override
+              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                  openDashBoard();
+
+              }
+
+
+              @Override
+              public void onCancelled(@NonNull DatabaseError databaseError) {
+
+              }
+          });
+
+
+            //e
+
+
          }
+
+    public void openDashBoard(){
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
+    }
 }

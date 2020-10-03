@@ -1,6 +1,7 @@
 package com.example.salonappnew;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -97,21 +99,56 @@ public class registeras extends AppCompatActivity {
                   .endAt(queryText+"\uf8ff");
 
 
-          data.addValueEventListener(new ValueEventListener() {
+
+          data.addChildEventListener(new ChildEventListener() {
               @Override
-              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                  UserType post = dataSnapshot.getValue(UserType.class);
-                  Log.d("Data","Data-"+dataSnapshot.getValue());
-                  Log.d("Data","Data-"+post.getType());
+              public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                  System.out.println(dataSnapshot.getKey());
+
+                  Log.d("Data","Data ->"+dataSnapshot.getKey());
+                  Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
+
+                  UserType userType = dataSnapshot.getValue(UserType.class);
+
+                  Log.d("Data","Data ->"+userType.getType());
+              }
+
+              @Override
+              public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
               }
 
+              @Override
+              public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+              }
+
+              @Override
+              public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+              }
 
               @Override
               public void onCancelled(@NonNull DatabaseError databaseError) {
 
               }
           });
+
+//          data.addValueEventListener(new ValueEventListener() {
+//              @Override
+//              public void onDataChange(@NonNull DataSnapshot dataSnapshot,String prevChildKey) {
+//                  UserType post = dataSnapshot.getValue(UserType.class);
+//                  Log.d("Data","Data-"+dataSnapshot.getValue());
+//                  Log.d("Data","Data-"+post.getType());
+//
+//              }
+
+//
+//              @Override
+//              public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//              }
+//          });
 
 
             //e

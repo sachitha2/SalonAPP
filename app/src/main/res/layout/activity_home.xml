@@ -34,14 +34,14 @@
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
-            <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="0dp"
-                android:src="@drawable/account_icon" />
+<!--            <ImageView-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="62dp"-->
+<!--                android:layout_height="62dp"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="0dp"-->
+<!--                android:src="@drawable/account_icon" />-->
 
         </RelativeLayout>
 
@@ -72,10 +72,10 @@
 
                     android:padding="20dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_appointment"
@@ -108,10 +108,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_notification1"
@@ -143,10 +143,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_offer"
@@ -178,10 +178,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_news"
@@ -213,10 +213,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_product"
@@ -248,10 +248,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/appointment_icon" />-->
 
                     <TextView
                         android:id="@+id/txt_profile"

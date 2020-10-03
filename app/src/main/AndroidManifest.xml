@@ -9,40 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newact"></activity>
+        <activity android:name=".ui.Dashboard"></activity>
+        <activity android:name=".newact" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".drawer"></activity>
-        <activity android:name=".salonHome"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".drawer" />
+        <activity android:name=".salonHome" />
         <activity android:name=".serchprod" />
-        <activity android:name=".serchnearsal"></activity>
-        <activity android:name=".serch_district"></activity>
-        <activity android:name=".selectsalon"></activity>
-        <activity android:name=".salonchair"></activity>
-        <activity android:name=".registeras"></activity>
-        <activity android:name=".profile"></activity>
-        <activity android:name=".offers"></activity>
-        <activity android:name=".notification"></activity>
-        <activity android:name=".news"></activity>
-        <activity android:name=".newlogin"></activity>
+        <activity android:name=".serchnearsal" />
+        <activity android:name=".serch_district" />
+        <activity android:name=".selectsalon" />
+        <activity android:name=".salonchair" />
+        <activity android:name=".registeras" />
+        <activity android:name=".profile" />
+        <activity android:name=".offers" />
+        <activity android:name=".notification" />
+        <activity android:name=".news" />
+        <activity android:name=".newlogin" />
         <activity android:name=".manageproduct" />
-        <activity android:name=".login" >
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home">
-
-        </activity>
-        <activity android:name=".editsalondetails">
-
-        </activity>
+        <activity android:name=".home"></activity>
+        <activity android:name=".editsalondetails"></activity>
         <activity android:name=".editcustomer" />
         <activity android:name=".displayappoi" />
         <activity android:name=".category" />

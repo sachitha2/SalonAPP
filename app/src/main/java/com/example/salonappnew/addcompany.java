@@ -123,6 +123,7 @@
 
         mFDb.child("salon").child(userId).setValue(company);
         mFDb.child("userType").child(userId).setValue(userType);
+//        mFDb.child(company.getPhone()).child(userId).setValue(userType);
 //        emptyInputs();
         openDashBoard();
     }

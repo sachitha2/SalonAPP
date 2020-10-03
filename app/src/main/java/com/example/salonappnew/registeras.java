@@ -67,8 +67,7 @@ public class registeras extends AppCompatActivity {
         userId = mFDb.push().getKey();
 
         //find user data is available and if available intent to dashboard
-        searchFireStore();
-        //TODO
+        checkUserAvailability();
     }
 
     public void addCustomer(){
@@ -92,9 +91,7 @@ public class registeras extends AppCompatActivity {
         startActivity(intent);
     }
     private void searchFireStore(){
-            //s
-
-        String queryText = "sam@gmail.com";
+        String queryText = "ssdvfvfbvgvfgvgvtgvam@gmail.com";
           Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
                   .endAt(queryText+"\uf8ff");
 
@@ -133,31 +130,84 @@ public class registeras extends AppCompatActivity {
 
               }
           });
-
-//          data.addValueEventListener(new ValueEventListener() {
-//              @Override
-//              public void onDataChange(@NonNull DataSnapshot dataSnapshot,String prevChildKey) {
-//                  UserType post = dataSnapshot.getValue(UserType.class);
-//                  Log.d("Data","Data-"+dataSnapshot.getValue());
-//                  Log.d("Data","Data-"+post.getType());
-//
-//              }
-
-//
-//              @Override
-//              public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//              }
-//          });
-
-
-            //e
-
-
          }
 
     public void openDashBoard(){
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
+
+    public void checkUserAvailability(){
+        //if user available redirect to dashboard
+
+        String queryText = "sam@gmail.com";
+        Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
+                .endAt(queryText+"\uf8ff");
+
+
+
+//        data.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                System.out.println(dataSnapshot.getKey());
+//
+//                Log.d("Data","Data ->"+dataSnapshot.getKey());
+//                Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
+//
+//                UserType userType = dataSnapshot.getValue(UserType.class);
+//
+//                Log.d("Data","Data ->"+userType.getType());
+//
+//                if(userType.getType() == null){
+//                    Log.d("Data","Data -> USER NULL");
+//                }else{
+//                    Log.d("Data","User available");
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//                    Log.d("Data","Data Removed");
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        //TODO
+
+        data.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    //bus number exists in Databas
+                    Log.d("Data","Data  found");
+                    openDashBoard();
+                } else {
+                    //bus number doesn't exists.
+                    Log.d("Data","Data not  found");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+//TODO need to add loader 
 }

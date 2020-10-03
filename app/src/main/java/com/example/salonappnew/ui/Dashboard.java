@@ -6,16 +6,19 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.addapoint;
 import com.example.salonappnew.home;
+import com.example.salonappnew.login;
 import com.example.salonappnew.news;
 import com.example.salonappnew.notification;
 import com.example.salonappnew.offers;
 import com.example.salonappnew.profile;
 import com.example.salonappnew.serchprod;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
     CardView addAppointment;
@@ -24,6 +27,7 @@ public class Dashboard extends AppCompatActivity {
     CardView newsFeed;
     CardView products;
     CardView profile;
+    Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,16 @@ public class Dashboard extends AppCompatActivity {
         newsFeed = findViewById(R.id.newsFeed);
         products = findViewById(R.id.products);
         profile = findViewById(R.id.profile);
+
+        logout = findViewById(R.id.btnLogout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                openLogin();
+            }
+        });
 
         addAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,5 +111,16 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void openLogin(){
+        Intent intent = new Intent(Dashboard.this, login.class);
+        startActivity(intent);
+        kill_activity();
+    }
+
+    public void kill_activity()
+    {
+        finish();
     }
 }

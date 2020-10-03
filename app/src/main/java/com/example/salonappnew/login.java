@@ -29,6 +29,17 @@ public class login extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
+//        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+
+        if(mFirebaseAuth.getCurrentUser() == null ){
+            Toast.makeText(login.this,"current user not found", Toast.LENGTH_LONG).show();
+
+        }else {
+            openRegister();
+        }
+
+
+
         button = (Button) findViewById(R.id.btn_reg);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +56,7 @@ public class login extends AppCompatActivity {
                 fLogin();
             }
         });
+
 
 
     }

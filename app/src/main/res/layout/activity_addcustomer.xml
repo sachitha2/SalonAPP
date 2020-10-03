@@ -63,7 +63,7 @@
             android:orientation="horizontal" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName5"
+            android:id="@+id/eTxtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -151,7 +151,7 @@
         app:layout_constraintVertical_bias="0.783" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/eTxtPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

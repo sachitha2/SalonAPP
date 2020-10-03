@@ -12,7 +12,9 @@
  import android.widget.EditText;
  import android.widget.ImageView;
  import android.widget.Spinner;
+ import android.widget.Toast;
 
+ import com.example.salonappnew.models.Company;
  import com.example.salonappnew.models.Customer;
  import com.example.salonappnew.models.UserType;
  import com.example.salonappnew.ui.Dashboard;
@@ -27,7 +29,7 @@
      FirebaseAuth mFirebaseAuth;
      private DatabaseReference mFDb;
      private FirebaseDatabase mFirebaseInstant;
-
+     private  String userId;
      //end my
 
      private Button button;
@@ -43,12 +45,18 @@
 
          mFirebaseAuth = FirebaseAuth.getInstance();
 
-         eName = findViewById(R.id.editTextTextPersonName);
-         ePhone = findViewById(R.id.editTextTextPersonName4);
+         eName = findViewById(R.id.eTxtCName);
+         ePhone = findViewById(R.id.eTxtPNumber);
          eEmail = findViewById(R.id.eTxtEmail);
-         ePass = findViewById(R.id.eTxtPass);
+         ePass = findViewById(R.id.editTextTextPassword);
          eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
+         eAddress = findViewById(R.id.eTxtAddress);
 
+         mFirebaseInstant = FirebaseDatabase.getInstance();
+         mFDb = mFirebaseInstant.getReference("users");
+
+
+         userId = mFDb.push().getKey();
 
          imageView = (ImageView)findViewById(R.id.img);
          button1 = (Button)findViewById(R.id.btn_img);
@@ -70,7 +78,12 @@
          button.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 openDashBoard();
+                 if(validateData()){
+                     Toast.makeText(addcompany.this,"data valid",Toast.LENGTH_LONG).show();
+
+                     //add salon
+                     addData();
+                 }
              }
          });
 
@@ -91,27 +104,53 @@
      }
 
 
+    public void addData(){
+        String name;
+        String phone;
+        String email;
+        String address;
+        String password;
 
+        name = eName.getText().toString();
+        phone = ePhone.getText().toString();
+        email = eEmail.getText().toString();
+        password = ePass.getText().toString();
+        address = eAddress.getText().toString();
+
+        Company company = new Company(name,address,phone,email,password);
+
+        UserType userType = new UserType(email,"SALON");
+
+        mFDb.child("salon").child(userId).setValue(company);
+        mFDb.child("userType").child(userId).setValue(userType);
+//        emptyInputs();
+        openDashBoard();
+    }
 
      public boolean validateData(){
          String name;
          String phone;
          String email;
-         boolean gender;//false for women // true for men
-
+         String address;
          String password;
 
          name = eName.getText().toString();
          phone = ePhone.getText().toString();
          email = eEmail.getText().toString();
          password = ePass.getText().toString();
-         gender = false;
+         address = eAddress.getText().toString();
 
          if(name.isEmpty()){
              eName.setError("Please enter a Name");
              eName.requestFocus();
              return false;
-         }else if(phone.isEmpty()){
+         }
+         else if(address.isEmpty()){
+             ePhone.setError("Please enter a Address");
+             ePhone.requestFocus();
+             return false;
+         }
+         else if(phone.isEmpty()){
              ePhone.setError("Please enter a Phone number");
              ePhone.requestFocus();
              return false;

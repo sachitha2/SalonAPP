@@ -9,10 +9,26 @@
  import android.view.View;
  import android.widget.ArrayAdapter;
  import android.widget.Button;
+ import android.widget.EditText;
  import android.widget.ImageView;
  import android.widget.Spinner;
 
+ import com.example.salonappnew.models.Customer;
+ import com.example.salonappnew.models.UserType;
+ import com.example.salonappnew.ui.Dashboard;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
+
  public class addcompany extends AppCompatActivity {
+
+     //my
+     EditText eEmail,ePass,eName,ePhone,eAddress;
+     FirebaseAuth mFirebaseAuth;
+     private DatabaseReference mFDb;
+     private FirebaseDatabase mFirebaseInstant;
+
+     //end my
 
      private Button button;
      ImageView imageView;
@@ -24,6 +40,15 @@
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_addcompany);
+
+         mFirebaseAuth = FirebaseAuth.getInstance();
+
+         eName = findViewById(R.id.editTextTextPersonName);
+         ePhone = findViewById(R.id.editTextTextPersonName4);
+         eEmail = findViewById(R.id.eTxtEmail);
+         ePass = findViewById(R.id.eTxtPass);
+         eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
+
 
          imageView = (ImageView)findViewById(R.id.img);
          button1 = (Button)findViewById(R.id.btn_img);
@@ -45,9 +70,10 @@
          button.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 openCom1();
+                 openDashBoard();
              }
          });
+
 
      }
 
@@ -64,14 +90,49 @@
          }
      }
 
-     public void openCom1() {
-         Intent intent = new Intent(this, home.class);
-         startActivity(intent);
+
+
+
+     public boolean validateData(){
+         String name;
+         String phone;
+         String email;
+         boolean gender;//false for women // true for men
+
+         String password;
+
+         name = eName.getText().toString();
+         phone = ePhone.getText().toString();
+         email = eEmail.getText().toString();
+         password = ePass.getText().toString();
+         gender = false;
+
+         if(name.isEmpty()){
+             eName.setError("Please enter a Name");
+             eName.requestFocus();
+             return false;
+         }else if(phone.isEmpty()){
+             ePhone.setError("Please enter a Phone number");
+             ePhone.requestFocus();
+             return false;
+         }
+         else if(email.isEmpty()){
+             eEmail.setError("Please provide a email");
+             eEmail.requestFocus();
+             return false;
+         }else if(password.isEmpty()){
+             ePass.setError("Please enter a password");
+             ePass.requestFocus();
+             return false;
+         }
+
+         else{
+             return true;
+         }
      }
 
-
-     //firebase
-
-
-     //end of firebase methods
+     public void openDashBoard(){
+         Intent intent = new Intent(this, Dashboard.class);
+         startActivity(intent);
+     }
  }

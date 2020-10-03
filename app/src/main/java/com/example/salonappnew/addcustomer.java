@@ -126,6 +126,7 @@ public class addcustomer extends AppCompatActivity {
 
         mFDb.child("customer").child(userId).setValue(customer);
         mFDb.child("userType").child(userId).setValue(userType);
+//        mFDb.child("E").setValue(customer);
         emptyInputs();
         openDashBoard();
 

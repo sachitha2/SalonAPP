@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.351">
 
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/eTxtCName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -60,7 +60,7 @@
             android:spinnerMode="dialog" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName7"
+            android:id="@+id/eTxtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -68,7 +68,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName8"
+            android:id="@+id/eTxtPNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -76,7 +76,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName10"
+            android:id="@+id/eTxtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

@@ -30,55 +30,36 @@ public class home extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, addapoint.class);
-                startActivity(intent);
 
-                Toast.makeText(home.this, "Go to Appointment", Toast.LENGTH_SHORT).show();
             }
         });
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, notification.class);
-                startActivity(intent);
 
-                Toast.makeText(home.this, "Go to Notifications", Toast.LENGTH_SHORT).show();
             }
         });
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, offers.class);
-                startActivity(intent);
 
-                Toast.makeText(home.this, "Go to Offers", Toast.LENGTH_SHORT).show();
             }
         });
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, news.class);
-                startActivity(intent);
-
-                Toast.makeText(home.this, "Go to News feed", Toast.LENGTH_SHORT).show();
             }
         });
         textView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, serchprod.class);
-                startActivity(intent);
 
-                Toast.makeText(home.this, "Go to Products", Toast.LENGTH_SHORT).show();
             }
         });
         textView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this, profile.class);
-                startActivity(intent);
 
-                Toast.makeText(home.this, "Go to Profile", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -144,49 +144,6 @@ public class registeras extends AppCompatActivity {
         Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
                 .endAt(queryText+"\uf8ff");
 
-
-
-//        data.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                System.out.println(dataSnapshot.getKey());
-//
-//                Log.d("Data","Data ->"+dataSnapshot.getKey());
-//                Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
-//
-//                UserType userType = dataSnapshot.getValue(UserType.class);
-//
-//                Log.d("Data","Data ->"+userType.getType());
-//
-//                if(userType.getType() == null){
-//                    Log.d("Data","Data -> USER NULL");
-//                }else{
-//                    Log.d("Data","User available");
-//                }
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//                    Log.d("Data","Data Removed");
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-        //TODO
-
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

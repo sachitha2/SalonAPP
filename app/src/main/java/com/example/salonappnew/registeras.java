@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,7 @@ public class registeras extends AppCompatActivity {
         button1 = (Button) findViewById(R.id.btn_com);
 
         //find user data is available and if available intent to dashboard
+
         //TODO
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -76,5 +78,6 @@ public class registeras extends AppCompatActivity {
         Intent intent = new Intent(this, addcompany.class);
         startActivity(intent);
     }
-
+    private void searchFireStore(){
+         }
 }

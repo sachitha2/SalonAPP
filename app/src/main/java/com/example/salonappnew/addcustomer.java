@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.salonappnew.models.Customer;
+import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -121,10 +122,10 @@ public class addcustomer extends AppCompatActivity {
         gender = true;
 
         Customer customer = new Customer(name,phone,email,gender,password);
-
+        UserType userType = new UserType(email,"CUSTOMER");
 
         mFDb.child("customer").child(userId).setValue(customer);
-        mFDb.child("userType").child(userId).setValue(customer);
+        mFDb.child("userType").child(userId).setValue(userType);
         emptyInputs();
         openDashBoard();
 

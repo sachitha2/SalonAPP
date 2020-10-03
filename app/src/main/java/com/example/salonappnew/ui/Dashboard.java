@@ -65,7 +65,7 @@ public class Dashboard extends AppCompatActivity {
         addAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, addapoint.class);
+                Intent intent = new Intent(Dashboard.this, SelectASalon.class);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Go to Appointment", Toast.LENGTH_SHORT).show();

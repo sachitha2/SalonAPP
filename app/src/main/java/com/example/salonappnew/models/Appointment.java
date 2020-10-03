@@ -6,15 +6,13 @@ public class Appointment {
     String salonEmail;
     String date;
     String time;
-    String customerId;
     String customerEmail;
 
-    public Appointment(String salonId, String salonEmail, String date, String time, String customerId, String customerEmail) {
+    public Appointment(String salonId, String salonEmail, String date, String time, String customerEmail) {
         this.salonId = salonId;
         this.salonEmail = salonEmail;
         this.date = date;
         this.time = time;
-        this.customerId = customerId;
         this.customerEmail = customerEmail;
     }
 
@@ -54,13 +52,7 @@ public class Appointment {
         this.time = time;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
 
     public String getCustomerEmail() {
         return customerEmail;

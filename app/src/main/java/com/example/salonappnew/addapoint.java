@@ -43,7 +43,7 @@ public class addapoint extends AppCompatActivity {
     Button btn_date;
     TextView tvTimer2;
     int t2Hour,t2Minute;
-    String date = null, time = null;
+    String date = null, time = null,selectedTime;
 
     private  String userId;
 
@@ -141,6 +141,8 @@ public class addapoint extends AppCompatActivity {
                                             "hh:mm aa"
                                     );
                                     assert date != null;
+
+                                    selectedTime = f12Hourse.format(date);
                                     tvTimer2.setText(f12Hourse.format(date));
                                 }catch (ParseException e){
                                     e.printStackTrace();
@@ -165,7 +167,7 @@ public class addapoint extends AppCompatActivity {
 
     public void addData(){
 
-        Appointment appointment = new Appointment("2588","salonnn@gmail.com",date,time,"cId",mFirebaseAuth.getCurrentUser().getEmail());
+        Appointment appointment = new Appointment("2588","salonnn@gmail.com",date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
 
         mFDb.child("appointment").child(userId).setValue(appointment);
 
@@ -177,7 +179,7 @@ public class addapoint extends AppCompatActivity {
             Toast toast= Toast. makeText(addapoint.this,"Please Select a Date",Toast. LENGTH_SHORT);
             toast. show();
             return false;
-        }else if(time == null){
+        }else if(selectedTime == null){
             Log.d("Data","Time is null");
             Toast toast= Toast. makeText(addapoint.this,"Please Select a Time",Toast. LENGTH_SHORT);
             toast. show();

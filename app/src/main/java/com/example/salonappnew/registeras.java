@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,8 +67,6 @@ public class registeras extends AppCompatActivity {
 
         userId = mFDb.push().getKey();
 
-        //find user data is available and if available intent to dashboard
-        checkUserAvailability();
     }
 
     public void addCustomer(){
@@ -132,39 +131,6 @@ public class registeras extends AppCompatActivity {
           });
          }
 
-    public void openDashBoard(){
-        Intent intent = new Intent(this, Dashboard.class);
-        startActivity(intent);
-    }
-
-    public void checkUserAvailability(){
-        //if user available redirect to dashboard
-
-        String queryText = "sam@gmail.com";
-        Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
-                .endAt(queryText+"\uf8ff");
-
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    //bus number exists in Databas
-                    Log.d("Data","Data  found");
-                    openDashBoard();
-                } else {
-                    //bus number doesn't exists.
-                    Log.d("Data","Data not  found");
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 
-//TODO need to add loader
 }

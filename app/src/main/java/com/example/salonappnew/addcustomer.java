@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.salonappnew.ui.Dashboard;
+
 public class addcustomer extends AppCompatActivity {
 
     private Button button;
@@ -28,7 +30,7 @@ public class addcustomer extends AppCompatActivity {
 
     }
     public void openCus1(){
-        Intent intent = new Intent(this, home.class);
+        Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
 }

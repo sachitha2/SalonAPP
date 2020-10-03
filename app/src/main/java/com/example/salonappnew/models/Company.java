@@ -5,18 +5,16 @@ public class Company {
     String address;
     String phone;
     String email;
-    String password;
 
     public Company(){
 
     }
 
-    public Company(String companyName, String address, String phone, String email, String password) {
+    public Company(String companyName, String address, String phone, String email) {
         this.companyName = companyName;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        this.password = password;
     }
 
 
@@ -38,7 +36,5 @@ public class Company {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
+
 }

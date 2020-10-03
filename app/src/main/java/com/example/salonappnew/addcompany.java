@@ -40,7 +40,7 @@
      StorageReference storageReference;
 
      //my
-     EditText eEmail,ePass,eName,ePhone,eAddress;
+     EditText eEmail,eName,ePhone,eAddress;
      FirebaseAuth mFirebaseAuth;
      private DatabaseReference mFDb;
      private FirebaseDatabase mFirebaseInstant;
@@ -63,7 +63,6 @@
          eName = findViewById(R.id.eTxtCName);
          ePhone = findViewById(R.id.eTxtPNumber);
          eEmail = findViewById(R.id.eTxtEmail);
-         ePass = findViewById(R.id.editTextTextPassword);
          eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
          eAddress = findViewById(R.id.eTxtAddress);
 
@@ -161,15 +160,13 @@
         String phone;
         String email;
         String address;
-        String password;
 
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
-        password = ePass.getText().toString();
         address = eAddress.getText().toString();
 
-        Company company = new Company(name,address,phone,email,password);
+        Company company = new Company(name,address,phone,email);
 
         UserType userType = new UserType(email,"SALON");
 
@@ -186,12 +183,10 @@
          String phone;
          String email;
          String address;
-         String password;
 
          name = eName.getText().toString();
          phone = ePhone.getText().toString();
          email = eEmail.getText().toString();
-         password = ePass.getText().toString();
          address = eAddress.getText().toString();
 
          if(name.isEmpty()){
@@ -213,12 +208,7 @@
              eEmail.setError("Please provide a email");
              eEmail.requestFocus();
              return false;
-         }else if(password.isEmpty()){
-             ePass.setError("Please enter a password");
-             ePass.requestFocus();
-             return false;
          }
-
          else{
              return true;
          }
@@ -233,7 +223,6 @@
          eName.setText("");
          ePhone.setText("");
          eEmail.setText("");
-         ePass.setText("");
          eAddress.setText("");
      }
 

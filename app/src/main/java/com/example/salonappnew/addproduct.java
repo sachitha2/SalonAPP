@@ -1,5 +1,6 @@
 package com.example.salonappnew;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,8 @@ import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.Product;
 import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -64,11 +67,36 @@ public class addproduct extends AppCompatActivity {
         Product product = new Product(txtProductName.getText().toString(),txtRNo.getText().toString(),Float.parseFloat(txtPrice.getText().toString()),txtDescri.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail());
         Toast.makeText(addproduct.this,"Product added",Toast.LENGTH_LONG).show();
 
-        mFDb.child("products").child(userId).setValue(product);
-        this.finish();
+        mFDb.child("products").child(userId).setValue(product).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
     }
 
 
-
+//    public boolean validateData(){
+//
+//
+//        if(txtProductName.getText().toString().isEmpty()){
+//            txtProductName.setError("Please enter a Name");
+//            txtProductName.requestFocus();
+//            return false;
+//        }else if(phone.isEmpty()){
+//            ePhone.setError("Please enter a Phone number");
+//            ePhone.requestFocus();
+//            return false;
+//        }
+//        else if(email.isEmpty()){
+//            eEmail.setError("Please provide a email");
+//            eEmail.requestFocus();
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
+//    }
 
 }

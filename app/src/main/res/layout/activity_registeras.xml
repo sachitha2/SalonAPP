@@ -23,6 +23,7 @@
         android:layout_width="158dp"
         android:layout_height="57dp"
         android:text="Register As"
+        android:textColor="#150D0D"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,25 +35,27 @@
         android:id="@+id/btn_cus"
         android:layout_width="232dp"
         android:layout_height="86dp"
+        android:background="@drawable/round_border"
         android:text="Customer"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.431" />
 
     <Button
         android:id="@+id/btn_com"
         android:layout_width="232dp"
         android:layout_height="86dp"
+        android:background="@drawable/round_border"
         android:text="Company"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713" />
+        app:layout_constraintVertical_bias="0.691" />
 </androidx.constraintlayout.widget.ConstraintLayout>

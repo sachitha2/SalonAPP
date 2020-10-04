@@ -113,7 +113,7 @@
 <!--        app:layout_constraintVertical_bias="0.808" />-->
 
     <Button
-        android:id="@+id/btn_sub"
+        android:id="@+id/btn_addoffer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="submit"

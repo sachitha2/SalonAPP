@@ -91,7 +91,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
                 for (int i = 0; i < tmpArray.size(); i++) {
                     if (tmpArray.get(i).getpName().toUpperCase().contains(constraint)) {
-                        Product singleRow = new Product(tmpArray.get(i).getpName(),"",50,"","");
+                        Product singleRow = new Product(tmpArray.get(i).getpName(),"",50,"","","");
                         filters.add(singleRow);
 
 

@@ -6,17 +6,19 @@ public class Product {
     float price;
     String description;
     String email;
+    String img;
 
     public Product(){
 
     }
 
-    public Product(String pName, String rNo, float price, String description,String email) {
+    public Product(String pName, String rNo, float price, String description,String email,String img) {
         this.pName = pName;
         this.rNo = rNo;
         this.price = price;
         this.description = description;
         this.email = email;
+        this.img = img;
     }
 
     public String getpName() {
@@ -41,5 +43,13 @@ public class Product {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

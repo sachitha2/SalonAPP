@@ -178,7 +178,7 @@
 //        mFDb.child(company.getPhone()).child(userId).setValue(userType);
 //        uploadImage();
         emptyInputs();
-        openLogin();
+        openDashBoard();
     }
 
      public boolean validateData(){
@@ -217,8 +217,9 @@
          }
      }
 
-     public void openLogin(){
-         Intent intent = new Intent(this, login.class);
+     public void openDashBoard(){
+         Intent intent = new Intent(this, Dashboard.class);
+         intent.putExtra("type","SALON");
          startActivity(intent);
      }
 

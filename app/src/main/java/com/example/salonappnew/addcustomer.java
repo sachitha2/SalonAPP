@@ -76,6 +76,7 @@ public class addcustomer extends AppCompatActivity {
     }
     public void openDashBoard(){
         Intent intent = new Intent(this, Dashboard.class);
+        intent.putExtra("type","CUSTOMER");
         startActivity(intent);
     }
 

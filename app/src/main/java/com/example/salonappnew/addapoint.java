@@ -38,6 +38,8 @@ public class addapoint extends AppCompatActivity {
     private DatabaseReference mFDb;
     private FirebaseDatabase mFirebaseInstant;
 
+
+    String salonName;
     FirebaseAuth mFirebaseAuth;
     String salonEmail;
     TextView txtSalon;
@@ -66,7 +68,8 @@ public class addapoint extends AppCompatActivity {
 
 
         txtSalon = findViewById(R.id.txtSalonName);
-        txtSalon.setText(intent.getStringExtra("salonName"));
+        salonName = intent.getStringExtra("salonName");
+        txtSalon.setText(salonName);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -171,7 +174,7 @@ public class addapoint extends AppCompatActivity {
 
     public void addData(){
 
-        Appointment appointment = new Appointment(salonEmail,date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
+        Appointment appointment = new Appointment(salonEmail,date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail(),salonName);
 
         mFDb.child("appointment").child(userId).setValue(appointment);
         Toast.makeText(this, "Appointment added successfully", Toast.LENGTH_SHORT).show();

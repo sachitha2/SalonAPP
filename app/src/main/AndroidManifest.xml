@@ -20,11 +20,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity android:name=".newact" />
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".drawer" />
+            <activity android:name=".drawer" />
         <activity android:name=".salonHome" />
         <activity android:name=".serchprod" />
         <activity android:name=".serchnearsal" />
@@ -36,7 +32,6 @@
         <activity android:name=".offers" />
         <activity android:name=".notification" />
         <activity android:name=".news" />
-        <activity android:name=".newlogin" />
         <activity android:name=".manageproduct" />
         <activity android:name=".login">
             <intent-filter>

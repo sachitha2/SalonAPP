@@ -65,11 +65,11 @@ public class addproduct extends AppCompatActivity {
 
 
         Product product = new Product(txtProductName.getText().toString(),txtRNo.getText().toString(),Float.parseFloat(txtPrice.getText().toString()),txtDescri.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail());
-        Toast.makeText(addproduct.this,"Product added",Toast.LENGTH_LONG).show();
 
         mFDb.child("products").child(userId).setValue(product).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(addproduct.this,"Product added",Toast.LENGTH_LONG).show();
 
             }
         });
@@ -77,26 +77,31 @@ public class addproduct extends AppCompatActivity {
     }
 
 
-//    public boolean validateData(){
-//
-//
-//        if(txtProductName.getText().toString().isEmpty()){
-//            txtProductName.setError("Please enter a Name");
-//            txtProductName.requestFocus();
-//            return false;
-//        }else if(phone.isEmpty()){
-//            ePhone.setError("Please enter a Phone number");
-//            ePhone.requestFocus();
-//            return false;
-//        }
-//        else if(email.isEmpty()){
-//            eEmail.setError("Please provide a email");
-//            eEmail.requestFocus();
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-//    }
+    public boolean validateData(){
+
+
+        if(txtProductName.getText().toString().isEmpty()){
+            txtProductName.setError("Please enter a product name");
+            txtProductName.requestFocus();
+            return false;
+        }else if(txtRNo.getText().toString().isEmpty()){
+            txtRNo.setError("Please enter registration number");
+            txtRNo.requestFocus();
+            return false;
+        }
+        else if(txtPrice.getText().toString().isEmpty()){
+            txtPrice.setError("Please enter  price");
+            txtPrice.requestFocus();
+            return false;
+        }
+        else if(txtDescri.getText().toString().isEmpty()){
+            txtDescri.setError("Please provide description");
+            txtDescri.requestFocus();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
 }

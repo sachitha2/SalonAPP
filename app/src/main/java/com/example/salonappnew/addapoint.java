@@ -174,7 +174,7 @@ public class addapoint extends AppCompatActivity {
         Appointment appointment = new Appointment(salonEmail,date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
 
         mFDb.child("appointment").child(userId).setValue(appointment);
-
+        kill_activity();
     }
 
     public boolean validateData(){
@@ -193,6 +193,11 @@ public class addapoint extends AppCompatActivity {
         }
 
 
+    }
+
+    public void kill_activity()
+    {
+        finish();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.salonappnew.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -58,6 +59,8 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
                 intent.putExtra("district", originalArray.get(position).getName());
                 c.startActivity(intent);
                 Toast.makeText(c, originalArray.get(position).getName() + " was clicked", Toast.LENGTH_SHORT).show();
+                ((Activity) c).finish();
+
             }
         });
 

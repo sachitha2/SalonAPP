@@ -45,17 +45,17 @@ public class CustomerListAdapter extends BaseAdapter implements Filterable {
 
         View row = inflater.inflate(R.layout.customer_list,null);
 
-        TextView textView =(TextView)row.findViewById(R.id.id);
-        TextView textAge = row.findViewById(R.id.txtCID);
-        TextView textNic = row.findViewById(R.id.txtNic);
-        TextView textArea = row.findViewById(R.id.txtArea);
+        TextView txtSalonName =row.findViewById(R.id.txtSalonName);
+        TextView textTel = row.findViewById(R.id.txtTel);
+        TextView textAddress = row.findViewById(R.id.txtAddress);
+        TextView textEmail = row.findViewById(R.id.txtEmail);
 
 
-        textView.setText(originalArray.get(position).getAddress());
-        textAge.setText(originalArray.get(position).getCompanyName());
+        txtSalonName.setText(originalArray.get(position).getCompanyName());
+        textTel.setText(originalArray.get(position).getPhone());
 
-        textNic.setText(originalArray.get(position).getEmail());
-        textArea.setText(originalArray.get(position).getPhone());
+        textAddress.setText(originalArray.get(position).getAddress());
+        textEmail.setText(originalArray.get(position).getEmail());
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

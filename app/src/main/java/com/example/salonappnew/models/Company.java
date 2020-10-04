@@ -1,5 +1,9 @@
 package com.example.salonappnew.models;
 
+import com.example.salonappnew.ui.SelectASalon;
+
+import java.util.ArrayList;
+
 public class Company {
     String companyName;
     String address;
@@ -17,7 +21,8 @@ public class Company {
         this.email = email;
     }
 
-
+    public Company(SelectASalon selectASalon, ArrayList<Company> myList) {
+    }
 
 
     public String getCompanyName() {

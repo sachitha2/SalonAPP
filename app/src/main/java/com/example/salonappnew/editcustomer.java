@@ -70,7 +70,6 @@ public class editcustomer extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 openLogin();
 
-                //TODO redirect to login page
             }
         });
 

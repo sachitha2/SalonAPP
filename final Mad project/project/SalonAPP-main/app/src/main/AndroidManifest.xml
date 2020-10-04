@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.salonappnew">
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+
+        <activity android:name=".ui.Dashboard">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".newact" />
+        <activity android:name=".drawer" />
+        <activity android:name=".salonHome" />
+        <activity android:name=".serchprod" />
+        <activity android:name=".serchnearsal" />
+        <activity android:name=".serch_district" />
+        <activity android:name=".selectsalon" />
+        <activity android:name=".salonchair" />
+        <activity android:name=".registeras" />
+        <activity android:name=".profile" />
+        <activity android:name=".offers" />
+        <activity android:name=".notification" />
+        <activity android:name=".news" />
+            <activity android:name=".manageproduct" />
+        <activity android:name=".login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".home"></activity>
+        <activity android:name=".editsalondetails"></activity>
+        <activity android:name=".editcustomer" />
+        <activity android:name=".displayappoi" />
+        <activity android:name=".category" />
+        <activity android:name=".addproduct" />
+        <activity android:name=".addcustomer" />
+        <activity android:name=".addcompany" />
+        <activity android:name=".addapoint" />
+        <activity android:name=".about" />
+    </application>
+
+</manifest>

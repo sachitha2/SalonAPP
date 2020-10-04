@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".selectsalon"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="417dp"
+        android:layout_height="87dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/banner" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="404dp"
+        android:layout_height="41dp"
+        android:text="Select Your District"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168" />
+
+    <SearchView
+        android:id="@+id/searchView5"
+        android:layout_width="366dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238" />
+
+    <ScrollView
+        android:layout_width="321dp"
+        android:layout_height="509dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/d1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Colombo" />
+
+            <Button
+                android:id="@+id/d2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kandy" />
+
+            <Button
+                android:id="@+id/d3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/d4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ampara" />
+
+            <Button
+                android:id="@+id/d5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="anuradhapura" />
+
+            <Button
+                android:id="@+id/d6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="badulla" />
+
+            <Button
+                android:id="@+id/d7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="batticaloa" />
+
+            <Button
+                android:id="@+id/d8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="gampaha" />
+
+            <Button
+                android:id="@+id/d9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hambanthota" />
+
+            <Button
+                android:id="@+id/d10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="jaffna" />
+
+            <Button
+                android:id="@+id/d11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kaluthara" />
+
+            <Button
+                android:id="@+id/d12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kegalle" />
+
+            <Button
+                android:id="@+id/d13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kilinochchi" />
+
+            <Button
+                android:id="@+id/d14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kurunegala" />
+
+            <Button
+                android:id="@+id/d15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mannar" />
+
+            <Button
+                android:id="@+id/d16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mathale" />
+
+            <Button
+                android:id="@+id/d17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mathara" />
+
+            <Button
+                android:id="@+id/d18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="monaragala" />
+
+            <Button
+                android:id="@+id/d19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mulathiw" />
+
+            <Button
+                android:id="@+id/d20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nuwara eli" />
+
+            <Button
+                android:id="@+id/d21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="polonnaru" />
+
+            <Button
+                android:id="@+id/d22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="puththalam" />
+
+            <Button
+                android:id="@+id/d23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="rathnapura" />
+
+            <Button
+                android:id="@+id/d24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="trincomalee" />
+
+            <Button
+                android:id="@+id/d25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="vavuniya" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,10 @@ public class Customer {
     String name;
     String phone;
     String email;
-    boolean gender;//false for women // true for men
+    String gender;//false for women // true for men
 
     String password;
+    String imgUrl;
 
     public String getName() {
         return name;
@@ -22,7 +23,7 @@ public class Customer {
         return email;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
@@ -36,11 +37,28 @@ public class Customer {
 
     }
 
-    public Customer(String name, String phone, String email, boolean gender, String password) {
+    public Customer(String name, String phone, String email, String gender, String password,String imgUrl) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
         this.password = password;
+        this.imgUrl = imgUrl;
+    }
+
+    public Customer(String name, String phone, String email, String gender, String password) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
+        this.password = password;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

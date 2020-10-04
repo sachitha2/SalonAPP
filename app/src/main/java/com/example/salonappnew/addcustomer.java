@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.salonappnew.models.Customer;
@@ -24,6 +26,9 @@ public class addcustomer extends AppCompatActivity {
     private  String userId;
     EditText eEmail,ePass,eName,ePhone;
     FirebaseAuth mFirebaseAuth;
+    boolean gender;
+    RadioButton gMale;
+    RadioButton gFmale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,13 @@ public class addcustomer extends AppCompatActivity {
         eEmail = findViewById(R.id.eTxtEmail);
         ePass = findViewById(R.id.eTxtPass);
         eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
+
+
+        gMale = findViewById(R.id.rMale);
+        gFmale = findViewById(R.id.rFemale);
+
+
+
         eEmail.setEnabled(false);
         button = (Button) findViewById(R.id.btn_sub1);
 
@@ -73,7 +85,6 @@ public class addcustomer extends AppCompatActivity {
         String name;
         String phone;
         String email;
-        boolean gender;//false for women // true for men
 
         String password;
 
@@ -81,7 +92,6 @@ public class addcustomer extends AppCompatActivity {
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
         password = ePass.getText().toString();
-        gender = false;
 
         if(name.isEmpty()){
             eName.setError("Please enter a Name");
@@ -96,7 +106,12 @@ public class addcustomer extends AppCompatActivity {
             eEmail.setError("Please provide a email");
             eEmail.requestFocus();
             return false;
-        }else if(password.isEmpty()){
+        }
+       else if(!(gMale.isChecked() || gFmale.isChecked())){
+            Toast.makeText(addcustomer.this,"Please Select a gender",Toast.LENGTH_LONG).show();
+            return false;
+        }
+       else if(password.isEmpty()){
             ePass.setError("Please enter a password");
             ePass.requestFocus();
             return false;
@@ -111,7 +126,7 @@ public class addcustomer extends AppCompatActivity {
         String name;
         String phone;
         String email;
-        boolean gender;//false for women // true for men
+        String gen;//false for women // true for men
 
         String password;
 
@@ -119,9 +134,17 @@ public class addcustomer extends AppCompatActivity {
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
         password = ePass.getText().toString();
-        gender = true;
 
-        Customer customer = new Customer(name,phone,email,gender,password);
+        //take gender
+        if(gMale.isChecked()){
+            gen = "Male";
+        }else{
+            gen = "Female";
+        }
+
+
+
+        Customer customer = new Customer(name,phone,email,gen,password);
         UserType userType = new UserType(email,"CUSTOMER");
 
         mFDb.child("customer").child(userId).setValue(customer);

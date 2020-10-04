@@ -69,18 +69,8 @@ public class registeras extends AppCompatActivity {
 
     }
 
-    public void addCustomer(){
-        Customer customer = new Customer("hevecdfc","venncd","erfe",false,"pass");
-        mFDb.child("customer").child(userId).setValue(customer);
-    }
-    public  void updateCustomer(){
-        mFDb.child("customer").child(userId).child("name").setValue("chata1");
-        mFDb.child("customer").child(userId).child("phone").setValue("07155");
-        mFDb.child("customer").child(userId).child("email").setValue("chata@chata.com");
-        mFDb.child("customer").child(userId).child("gender").setValue(false);
-        mFDb.child("customer").child(userId).child("password").setValue("password is me");
 
-    }
+
     public void openCus(){
         Intent intent = new Intent(this, addcustomer.class);
         startActivity(intent);

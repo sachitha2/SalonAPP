@@ -44,7 +44,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
         View row = inflater.inflate(R.layout.product_list,null);
 
-        TextView productName =row.findViewById(R.id.txtSalonName);
+        TextView productName =row.findViewById(R.id.txtProductName);
 
 
         productName.setText(originalArray.get(position).getpName());

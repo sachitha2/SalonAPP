@@ -1,6 +1,7 @@
 package com.example.salonappnew.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.models.Company;
@@ -52,14 +54,10 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
             @Override
             public void onClick(View v) {
 
-//                Intent intentCustomerProfile = new Intent(c, CustomerData.class);
-//
-//
-//
-//                //TODO Config putExtra variables here
-//                intentCustomerProfile.putExtra("customerId", originalArray.get(position).getAge());
-//                c.startActivity(intentCustomerProfile);
-//                Toast.makeText(c, originalArray.get(position).getName() + " was clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(c, SelectASalon.class);
+                intent.putExtra("district", originalArray.get(position).getName());
+                c.startActivity(intent);
+                Toast.makeText(c, originalArray.get(position).getName() + " was clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -35,9 +35,14 @@ public class SelectDistrict extends AppCompatActivity implements TextWatcher {
 
 
         myList = new ArrayList<>();
+        myList.add(new District("galgamuwa"));
+        myList.add(new District("galgamuwa"));
+        myList.add(new District("galgamuwa"));
+        myList.add(new District("galgamuwa"));
 
-        District d = new District("galgamuwa");
-        myList.add(d);
+        //TODO Add district list
+
+
 
         myAdapter = new DistrictListAdapter(SelectDistrict.this,myList);
 

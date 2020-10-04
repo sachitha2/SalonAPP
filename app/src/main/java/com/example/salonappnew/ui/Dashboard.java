@@ -99,6 +99,17 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        slistProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, ProductShowInSalon.class);
+                startActivity(intent);
+
+                Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         cAddAppoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

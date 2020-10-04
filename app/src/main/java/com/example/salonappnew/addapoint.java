@@ -174,6 +174,8 @@ public class addapoint extends AppCompatActivity {
         Appointment appointment = new Appointment(salonEmail,date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
 
         mFDb.child("appointment").child(userId).setValue(appointment);
+        Toast.makeText(this, "Appointment added successfully", Toast.LENGTH_SHORT).show();
+
         kill_activity();
     }
 

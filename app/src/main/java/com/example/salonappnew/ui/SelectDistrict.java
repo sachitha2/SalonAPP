@@ -35,12 +35,32 @@ public class SelectDistrict extends AppCompatActivity implements TextWatcher {
 
 
         myList = new ArrayList<>();
-        myList.add(new District("galgamuwa"));
-        myList.add(new District("galgamuwa"));
-        myList.add(new District("galgamuwa"));
-        myList.add(new District("galgamuwa"));
+        myList.add(new District("Jaffna"));
+        myList.add(new District("Kilinochchi"));
+        myList.add(new District("Mannar"));
+        myList.add(new District("Mullaitivu"));
+        myList.add(new District("Vavuniya"));
+        myList.add(new District("Puttalam"));
+        myList.add(new District("Kurunegala"));
+        myList.add(new District("Gampaha"));
+        myList.add(new District("Colombo"));
+        myList.add(new District("Kalutara"));
+        myList.add(new District("Anuradhapura"));
+        myList.add(new District("Polonnaruwa"));
+        myList.add(new District("Matale"));
+        myList.add(new District("Kandy"));
+        myList.add(new District("Nuwara Eliya"));
+        myList.add(new District("Kegalle"));
 
-        //TODO Add district list
+        myList.add(new District("Trincomalee"));
+        myList.add(new District("Batticaloa"));
+        myList.add(new District("Ampara"));
+        myList.add(new District("Badulla"));
+        myList.add(new District("Monaragala"));
+        myList.add(new District("Hambantota"));
+        myList.add(new District("Matara"));
+        myList.add(new District("Galle"));
+
 
 
 

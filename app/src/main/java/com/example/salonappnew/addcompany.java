@@ -17,7 +17,6 @@
  import android.widget.Toast;
 
  import com.example.salonappnew.models.Company;
- import com.example.salonappnew.models.Customer;
  import com.example.salonappnew.models.UserType;
  import com.example.salonappnew.ui.Dashboard;
  import com.google.android.gms.tasks.OnFailureListener;
@@ -88,7 +87,7 @@
          staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
          staticSpinner.setAdapter(staticAdapter);
 
-         button = (Button) findViewById(R.id.btn_sub);
+         button = (Button) findViewById(R.id.btn_addoffer);
 
          button.setOnClickListener(new View.OnClickListener() {
              @Override

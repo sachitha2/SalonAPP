@@ -24,9 +24,9 @@
             android:layout_marginRight="20dp">
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="210dp"
                 android:layout_height="54dp"
+                android:layout_marginTop="10dp"
                 android:text="Dashboard"
                 android:textColor="#000000"
                 android:textSize="30sp" />
@@ -44,11 +44,11 @@
                 android:textSize="17sp" />
 
             <ImageView
-                android:layout_marginTop="10dp"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="0dp"
                 android:src="@drawable/account_icon" />
 
@@ -64,8 +64,8 @@
 
             <androidx.cardview.widget.CardView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="137dp"
+                android:layout_height="175dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
@@ -73,45 +73,7 @@
                 app:cardElevation="6dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:backgroundTintMode="multiply"
-
-                    android:padding="20dp">
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
-
-                    <TextView
-                        android:id="@+id/txt_appointment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="     Add Salon       "
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="258dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -178,67 +140,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
-
-                    <TextView
-                        android:id="@+id/txt_news"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="News Feed"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon" />
-
-                    <TextView
-                        android:id="@+id/txt_product"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Reminders"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+                app:cardElevation="6dp"/>
 
             <androidx.cardview.widget.CardView
 
@@ -279,8 +181,8 @@
 
         <TextView
             android:id="@+id/textView31"
-            android:layout_width="match_parent"
-            android:layout_height="137dp"
+            android:layout_width="363dp"
+            android:layout_height="60dp"
             android:fontFamily="monospace"
             android:text="                                                              BEYOND YOUR STYLE LIMITS"
             android:textAlignment="center"

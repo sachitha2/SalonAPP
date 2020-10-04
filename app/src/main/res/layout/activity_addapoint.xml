@@ -37,9 +37,10 @@
 
     <Button
         android:id="@+id/btnAddAppointment"
-        android:layout_width="118dp"
+        android:layout_width="300sp"
         android:layout_height="49dp"
-        android:text="ADD"
+        android:background="@drawable/round_border"
+        android:text="ADD APPOINTMENT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -49,39 +50,48 @@
 
     <Button
         android:id="@+id/btn_time"
-        android:layout_width="211dp"
+        android:layout_width="300sp"
         android:layout_height="48dp"
+        android:background="@drawable/button_round"
+        android:drawableStart="@drawable/ic_baseline_access_time_24"
+        android:padding="16sp"
         android:text="Select time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintVertical_bias="0.674" />
 
     <Button
         android:id="@+id/btn_sln"
-        android:layout_width="213dp"
+        android:layout_width="300sp"
         android:layout_height="50dp"
+        android:background="@drawable/button_round"
+        android:drawableStart="@drawable/ic_baseline_apartment_24"
+        android:padding="16sp"
         android:text="Select salon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <Button
         android:id="@+id/btn_sub1"
-        android:layout_width="213dp"
+        android:layout_width="300sp"
         android:layout_height="50dp"
+        android:background="@drawable/button_round"
+        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+        android:padding="16sp"
         android:text="select date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525"
+        app:layout_constraintVertical_bias="0.499"
         tools:text="select date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

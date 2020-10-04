@@ -17,75 +17,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/banner" />
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="92dp"
-        android:layout_height="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706"
-        tools:srcCompat="@color/cardview_light_background" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="367dp"
-        android:layout_height="259dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351">
-
-        <EditText
-            android:id="@+id/eTxtCName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Company Name"
-            android:inputType="textPersonName" />
-
-
-        <Spinner
-            android:id="@+id/Category"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:dropDownWidth="match_parent"
-            android:entries="@array/Category"
-            android:spinnerMode="dialog" />
-
-        <EditText
-            android:id="@+id/eTxtAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Address"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/eTxtPNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/eTxtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/textView2"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -112,10 +44,24 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.808" />-->
 
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="169dp"
+        android:layout_height="85dp"
+        android:background="@drawable/round_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826"
+        tools:srcCompat="@color/cardview_light_background" />
+
     <Button
         android:id="@+id/btn_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_round"
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,12 +74,112 @@
         android:id="@+id/btn_img"
         android:layout_width="112dp"
         android:layout_height="42dp"
+        android:background="@drawable/button_round"
         android:text="add photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.78" />
+
+    <EditText
+        android:id="@+id/eTxtEmail"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662" />
+
+    <EditText
+        android:id="@+id/eTxtPNumber"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_local_phone_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <EditText
+        android:id="@+id/eTxtAddress"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_add_location_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Category"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <Spinner
+        android:id="@+id/Category"
+        android:layout_width="300sp"
+        android:layout_height="43dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/round_border"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/Category"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <EditText
+        android:id="@+id/eTxtCName"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_apartment_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Company Name"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.863" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Salon"
+        android:textColor="#200606"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="105dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

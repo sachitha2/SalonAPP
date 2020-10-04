@@ -130,6 +130,8 @@
              progressDialog.show();
 
              StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+             //TODO save image reference
+
              ref.putFile(imageUri)
                      .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                          @Override

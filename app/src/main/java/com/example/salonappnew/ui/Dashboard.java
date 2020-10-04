@@ -106,6 +106,16 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        cMyAppoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, CustomerAppoinments.class);
+                startActivity(intent);
+
+                Toast.makeText(Dashboard.this, "My Appointment", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        notification.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

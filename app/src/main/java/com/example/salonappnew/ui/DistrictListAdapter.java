@@ -42,13 +42,12 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View row = inflater.inflate(R.layout.customer_list,null);
+        View row = inflater.inflate(R.layout.district_list,null);
 
-        TextView txtSalonName =row.findViewById(R.id.txtSalonName);
-        TextView textTel = row.findViewById(R.id.txtTel);
+        TextView txtD =row.findViewById(R.id.txtDName);
 
 
-        txtSalonName.setText(originalArray.get(position).getName());
+        txtD.setText(originalArray.get(position).getName());
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

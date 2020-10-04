@@ -176,9 +176,9 @@
         mFDb.child("salon").child(userId).setValue(company);
         mFDb.child("userType").child(userId).setValue(userType);
 //        mFDb.child(company.getPhone()).child(userId).setValue(userType);
-        uploadImage();
+//        uploadImage();
         emptyInputs();
-        openDashBoard();
+        openLogin();
     }
 
      public boolean validateData(){
@@ -217,8 +217,8 @@
          }
      }
 
-     public void openDashBoard(){
-         Intent intent = new Intent(this, Dashboard.class);
+     public void openLogin(){
+         Intent intent = new Intent(this, login.class);
          startActivity(intent);
      }
 

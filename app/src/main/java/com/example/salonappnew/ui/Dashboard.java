@@ -3,6 +3,7 @@ package com.example.salonappnew.ui;
 
 import com.example.salonappnew.editcustomer;
 import com.example.salonappnew.editsalondetails;
+import com.example.salonappnew.addproduct;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -137,6 +138,17 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "My Profile", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        saddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, addproduct.class);
+                startActivity(intent);
+
+                Toast.makeText(Dashboard.this, "Add Products", Toast.LENGTH_SHORT).show();
             }
         });
 //        notification.setOnClickListener(new View.OnClickListener() {

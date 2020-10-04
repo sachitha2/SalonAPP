@@ -24,7 +24,7 @@ public class addcustomer extends AppCompatActivity {
     private FirebaseDatabase mFirebaseInstant;
     private Button button;
     private  String userId;
-    EditText eEmail,ePass,eName,ePhone;
+    EditText eEmail,eName,ePhone;
     FirebaseAuth mFirebaseAuth;
     boolean gender;
     RadioButton gMale;
@@ -40,7 +40,6 @@ public class addcustomer extends AppCompatActivity {
         eName = findViewById(R.id.editTextTextPersonName);
         ePhone = findViewById(R.id.editTextTextPersonName4);
         eEmail = findViewById(R.id.eTxtEmail);
-        ePass = findViewById(R.id.eTxtPass);
         eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
 
 
@@ -86,12 +85,10 @@ public class addcustomer extends AppCompatActivity {
         String phone;
         String email;
 
-        String password;
 
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
-        password = ePass.getText().toString();
 
         if(name.isEmpty()){
             eName.setError("Please enter a Name");
@@ -111,11 +108,6 @@ public class addcustomer extends AppCompatActivity {
             Toast.makeText(addcustomer.this,"Please Select a gender",Toast.LENGTH_LONG).show();
             return false;
         }
-       else if(password.isEmpty()){
-            ePass.setError("Please enter a password");
-            ePass.requestFocus();
-            return false;
-        }
 
         else{
             return true;
@@ -133,7 +125,6 @@ public class addcustomer extends AppCompatActivity {
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
-        password = ePass.getText().toString();
 
         //take gender
         if(gMale.isChecked()){
@@ -144,7 +135,7 @@ public class addcustomer extends AppCompatActivity {
 
 
 
-        Customer customer = new Customer(name,phone,email,gen,password);
+        Customer customer = new Customer(name,phone,email,gen,"no");
         UserType userType = new UserType(email,"CUSTOMER");
 
         mFDb.child("customer").child(userId).setValue(customer);
@@ -159,7 +150,6 @@ public class addcustomer extends AppCompatActivity {
         eName.setText("");
         ePhone.setText("");
         eEmail.setText("");
-        ePass.setText("");
     }
 
     //TODO need to add image upload part

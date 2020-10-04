@@ -7,6 +7,15 @@ public class Appointment {
     String date;
     String time;
     String customerEmail;
+    String salonName;
+
+    public String getSalonName() {
+        return salonName;
+    }
+
+    public void setSalonName(String salonName) {
+        this.salonName = salonName;
+    }
 
     public Appointment(String salonId, String salonEmail, String date, String time, String customerEmail) {
         this.salonId = salonId;
@@ -21,6 +30,15 @@ public class Appointment {
         this.date = date;
         this.time = time;
         this.customerEmail = customerEmail;
+    }
+
+    public Appointment(String salonId, String salonEmail, String date, String time, String customerEmail, String salonName) {
+        this.salonId = salonId;
+        this.salonEmail = salonEmail;
+        this.date = date;
+        this.time = time;
+        this.customerEmail = customerEmail;
+        this.salonName = salonName;
     }
 
     public Appointment(){

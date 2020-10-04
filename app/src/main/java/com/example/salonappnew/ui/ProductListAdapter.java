@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.models.CustomerAppoinment;
 import com.example.salonappnew.models.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,8 +47,8 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         View row = inflater.inflate(R.layout.product_list,null);
 
         TextView productName =row.findViewById(R.id.txtProductName);
-
-
+        ImageView simpleImageView = row.findViewById(R.id.simpleImageView);
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(simpleImageView);
         productName.setText(originalArray.get(position).getpName());
         row.setOnClickListener(new View.OnClickListener() {
             @Override

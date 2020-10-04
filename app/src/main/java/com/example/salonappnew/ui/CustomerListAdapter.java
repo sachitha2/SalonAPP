@@ -1,5 +1,6 @@
 package com.example.salonappnew.ui;
 
+import com.example.salonappnew.addapoint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -60,14 +61,10 @@ public class CustomerListAdapter extends BaseAdapter implements Filterable {
             @Override
             public void onClick(View v) {
 
-//                Intent intentCustomerProfile = new Intent(c, CustomerData.class);
-//
-//
-//
-//                //TODO Config putExtra variables here
-//                intentCustomerProfile.putExtra("customerId", originalArray.get(position).getAge());
-//                c.startActivity(intentCustomerProfile);
-//                Toast.makeText(c, originalArray.get(position).getName() + " was clicked", Toast.LENGTH_SHORT).show();
+                Intent intentCustomerProfile = new Intent(c,addapoint.class);
+                intentCustomerProfile.putExtra("salon", originalArray.get(position).getClass());
+                c.startActivity(intentCustomerProfile);
+                Toast.makeText(c, originalArray.get(position).getCompanyName() + " was clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

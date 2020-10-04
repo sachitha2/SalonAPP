@@ -161,5 +161,7 @@ public class addcustomer extends AppCompatActivity {
         eEmail.setText("");
         ePass.setText("");
     }
+
+    //TODO need to add image upload part
 }
 

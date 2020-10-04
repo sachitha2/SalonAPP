@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addproduct">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="408dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="568dp"
+        android:text="Add Product"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#120303"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="69dp"
+        android:layout_height="28dp"
+        android:text="Photo"
+        android:textColor="#101010"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="220dp"
+        android:layout_height="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="259dp"
+        android:layout_height="53dp"
+        android:background="@drawable/button_round"
+        android:text="ADD"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="417dp"
+        android:layout_height="87dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/banner" />
+
+    <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="33dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.042"
+        app:srcCompat="@drawable/ic_baseline_menu_24" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName16"
+        android:layout_width="300sp"
+        android:layout_height="58dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_attach_money_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.463" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName12"
+        android:layout_width="300sp"
+        android:layout_height="55dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_keyboard_capslock_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Register No"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.365" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName11"
+        android:layout_width="300sp"
+        android:layout_height="56dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_business_center_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Product Name"
+        android:inputType="textPersonName"
+        android:padding="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName17"
+        android:layout_width="300sp"
+        android:layout_height="58dp"
+        android:background="@drawable/round_border"
+        android:drawableStart="@drawable/ic_baseline_menu_24"
+        android:drawablePadding="16sp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.564"
+        android:padding="16sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

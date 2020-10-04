@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.models.Company;
+import com.example.salonappnew.models.District;
 
 import java.util.ArrayList;
 
@@ -18,14 +19,14 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
 
 
     Context c;
-    ArrayList<Company> originalArray,tmpArray;
+    ArrayList<District> originalArray,tmpArray;
     ///filter
     CustomFilter cs;
     ///filter
 
 
 
-    public DistrictListAdapter(Context c, ArrayList<Company> originalArray){
+    public DistrictListAdapter(Context c, ArrayList<District> originalArray){
         this.c = c;
         this.originalArray = originalArray;
         this.tmpArray = originalArray;
@@ -45,15 +46,9 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
 
         TextView txtSalonName =row.findViewById(R.id.txtSalonName);
         TextView textTel = row.findViewById(R.id.txtTel);
-        TextView textAddress = row.findViewById(R.id.txtAddress);
-        TextView textEmail = row.findViewById(R.id.txtEmail);
 
 
-        txtSalonName.setText(originalArray.get(position).getCompanyName());
-        textTel.setText(originalArray.get(position).getPhone());
-
-        textAddress.setText(originalArray.get(position).getAddress());
-        textEmail.setText(originalArray.get(position).getEmail());
+        txtSalonName.setText(originalArray.get(position).getName());
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,32 +96,16 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
                 constraint = constraint.toString().toUpperCase();
 
 
-                ArrayList<Company> filters = new ArrayList<>();
+                ArrayList<District> filters = new ArrayList<>();
 
                 for (int i = 0; i < tmpArray.size(); i++) {
-                    if (tmpArray.get(i).getCompanyName().toUpperCase().contains(constraint)) {
-                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail());
-
-
+                    if (tmpArray.get(i).getName().toUpperCase().contains(constraint)) {
+                        District singleRow = new District(tmpArray.get(i).getName());
 
                         filters.add(singleRow);
-
-
-
-
                     }
 
-                    if (tmpArray.get(i).getPhone().toUpperCase().contains(constraint)) {
-                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail());
 
-
-
-                        filters.add(singleRow);
-
-
-
-
-                    }
 
                 }
                 results.count = filters.size();
@@ -143,7 +122,7 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            originalArray  = (ArrayList<Company>)results.values;
+            originalArray  = (ArrayList<District>)results.values;
             notifyDataSetChanged();
         }
     }

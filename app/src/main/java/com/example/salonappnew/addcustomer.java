@@ -86,7 +86,7 @@ public class addcustomer extends AppCompatActivity {
         String phone;
         String email;
 
-
+        //TODO reversed because merging
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();

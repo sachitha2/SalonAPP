@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.424">
 
         <EditText
-            android:id="@+id/editTextTextPersonName11"
+            android:id="@+id/txtProductName"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:ems="10"
@@ -43,7 +43,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName12"
+            android:id="@+id/txtRNo"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
@@ -51,7 +51,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName16"
+            android:id="@+id/txtPrice"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:ems="10"
@@ -59,7 +59,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName17"
+            android:id="@+id/txtDescri"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:ems="10"
@@ -93,7 +93,7 @@
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btnAdd"
         android:layout_width="113dp"
         android:layout_height="48dp"
         android:text="ADD"

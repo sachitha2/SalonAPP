@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/banner" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnDelete"
         android:layout_width="109dp"
         android:layout_height="50dp"
         android:text="delete"
@@ -68,7 +68,7 @@
         app:layout_constraintVertical_bias="0.663">
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -76,7 +76,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/txtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -84,7 +84,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName9"
+            android:id="@+id/txtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -93,7 +93,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnEdit"
         android:layout_width="109dp"
         android:layout_height="50dp"
         android:text="edit"

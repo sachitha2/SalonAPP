@@ -38,12 +38,12 @@
      //Firebase storage
      FirebaseStorage storage;
      StorageReference storageReference;
-
+     private DatabaseReference mFDb;
+     private FirebaseDatabase mFirebaseInstant;
      //my
      EditText eEmail,eName,ePhone,eAddress;
      FirebaseAuth mFirebaseAuth;
-     private DatabaseReference mFDb;
-     private FirebaseDatabase mFirebaseInstant;
+
      private  String userId;
      //end my
 

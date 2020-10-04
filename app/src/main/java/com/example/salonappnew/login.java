@@ -1,6 +1,7 @@
 package com.example.salonappnew;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -12,12 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -166,10 +169,14 @@ public class login extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     //bus number exists in Databas
+                    Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
 
-                    openDashBoard();
+                    UserType userType = dataSnapshot.getValue(UserType.class);
+//
+                    Log.d("Data","User type found -> key "+dataSnapshot.getKey());
                     progressDialog.dismiss();
                     kill_activity();
+                    searchFireStore(mFirebaseAuth.getCurrentUser().getEmail());
                     Log.d("Data","Data  found");
 
                 } else {
@@ -189,13 +196,57 @@ public class login extends AppCompatActivity {
         });
     }
 
-    public void openDashBoard(){
+    public void openDashBoard(String type){
         Intent intent = new Intent(this, Dashboard.class);
+        intent.putExtra("type", type);
         startActivity(intent);
     }
 
     public void kill_activity()
     {
         finish();
+    }
+
+
+    private void searchFireStore( String queryText){
+        Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
+                .endAt(queryText+"\uf8ff");
+
+
+
+        data.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                System.out.println(dataSnapshot.getKey());
+
+                Log.d("Data","Data ->"+dataSnapshot.getKey());
+                Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
+
+                UserType userType = dataSnapshot.getValue(UserType.class);
+
+                Log.d("Data","Data ->"+userType.getType());
+                openDashBoard(userType.getType());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

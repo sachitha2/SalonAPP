@@ -22,8 +22,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/txtType"
                 android:text="BEYOND YOUR STYLE LIMITS"
-                android:textSize="10sp"
+                android:textSize="20sp"
                 android:layout_marginTop="6dp"
                 android:layout_below="@+id/txtDashboard"
                 android:layout_width="wrap_content"
@@ -36,15 +37,15 @@
         </RelativeLayout>
 
         <GridLayout
-            android:id="@+id/salon"
-            android:rowCount="3"
+            android:id="@+id/customer"
+            android:rowCount="2"
             android:columnCount="2"
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <androidx.cardview.widget.CardView
-                android:id="@+id/addAppointment"
+                android:id="@+id/cAddAppointment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -70,13 +71,13 @@
 
                         android:layout_width="wrap_content"
                         android:text="+Appointment"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/notification"
+                android:id="@+id/cAppointments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -101,13 +102,13 @@
                         android:layout_marginTop="12dp"
 
                         android:layout_width="wrap_content"
-                        android:text=" Notification "
-                        android:textSize="20dp"
+                        android:text="Appointments "
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/offers"
+                android:id="@+id/cProducts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -132,13 +133,13 @@
                         android:layout_marginTop="12dp"
 
                         android:layout_width="wrap_content"
-                        android:text="Offers"
-                        android:textSize="20dp"
+                        android:text="Product"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/newsFeed"
+                android:id="@+id/cProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -163,55 +164,25 @@
                         android:layout_marginTop="12dp"
 
                         android:layout_width="wrap_content"
-                        android:text="News Feed"
-                        android:textSize="20dp"
+                        android:text="Profile"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/products"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
 
-                >
-                <LinearLayout
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:orientation="vertical"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon"/>
-                    <TextView
-                        android:layout_marginTop="12dp"
-
-                        android:layout_width="wrap_content"
-                        android:text="Products"
-                        android:textSize="20dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
         </GridLayout>
 
         <GridLayout
-            android:id="@+id/customer"
-            android:rowCount="3"
+            android:id="@+id/salon"
+            android:rowCount="2"
             android:columnCount="2"
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <androidx.cardview.widget.CardView
-                android:id="@+id/appointments"
+                android:id="@+id/sAppointments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -237,13 +208,13 @@
 
                         android:layout_width="wrap_content"
                         android:text="Appointments"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/SNotification"
+                android:id="@+id/sAddProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -268,75 +239,13 @@
                         android:layout_marginTop="12dp"
 
                         android:layout_width="wrap_content"
-                        android:text=" Notification "
-                        android:textSize="20dp"
+                        android:text="+ Product"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/SProducts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-
-                >
-                <LinearLayout
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:orientation="vertical"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon"/>
-                    <TextView
-                        android:layout_marginTop="12dp"
-
-                        android:layout_width="wrap_content"
-                        android:text="Offers"
-                        android:textSize="20dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/viewProducts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-
-                >
-                <LinearLayout
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:orientation="vertical"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/appointment_icon"/>
-                    <TextView
-                        android:layout_marginTop="12dp"
-
-                        android:layout_width="wrap_content"
-                        android:text="News Feed"
-                        android:textSize="20dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/Sprofile"
+                android:id="@+id/sListProducts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -362,12 +271,12 @@
 
                         android:layout_width="wrap_content"
                         android:text="Products"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/profile"
+                android:id="@+id/sProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -397,6 +306,8 @@
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+
         </GridLayout>
         <Button
             android:id="@+id/btnLogout"

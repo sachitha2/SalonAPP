@@ -5,9 +5,11 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
@@ -22,12 +24,25 @@ import com.example.salonappnew.serchprod;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
-    CardView addAppointment;
-    CardView notification;
-    CardView offers;
-    CardView newsFeed;
-    CardView products;
-    CardView profile;
+
+
+    TextView txtType;
+    String type;
+      //Customer card view
+    CardView cAddAppoint;
+    CardView cMyAppoint;
+    CardView cProduct;
+    CardView cProfile;
+
+    //salon card view
+    CardView sNewAppoint;
+    CardView saddProduct;
+    CardView slistProduct;
+    CardView sProfile;
+
+
+
+
     Button logout;
 
     GridLayout customer;
@@ -36,20 +51,38 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        //Customer part
+        cAddAppoint = findViewById(R.id.cAddAppointment);
+        cMyAppoint = findViewById(R.id.cAppointments);
+        cProduct = findViewById(R.id.cProducts);
+        cProfile = findViewById(R.id.cProfile);
 
-        addAppointment = findViewById(R.id.addAppointment);
-        notification = findViewById(R.id.notification);
-        offers = findViewById(R.id.offers);
-        newsFeed = findViewById(R.id.newsFeed);
-        products = findViewById(R.id.products);
-        profile = findViewById(R.id.profile);
+        //salon part
+        sNewAppoint = findViewById(R.id.sAppointments);
+        saddProduct = findViewById(R.id.sAddProduct);
+        slistProduct = findViewById(R.id.sListProducts);
+        sProfile = findViewById(R.id.sProfile);
+
+        txtType = findViewById(R.id.txtType);
+
 
         customer = findViewById(R.id.customer);
         salon = findViewById(R.id.salon);
 
-        customer.setVisibility(View.GONE);
-        salon.setVisibility(View.VISIBLE);
+        Intent intent = getIntent();
 
+        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        if(type.equals("SALON")){
+            customer.setVisibility(View.GONE);
+            salon.setVisibility(View.VISIBLE);
+            txtType.setText("Salon");
+        }else{
+            customer.setVisibility(View.VISIBLE);
+            salon.setVisibility(View.GONE);
+            txtType.setText("Customer");
+        }
 
 
         logout = findViewById(R.id.btnLogout);
@@ -62,7 +95,7 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        addAppointment.setOnClickListener(new View.OnClickListener() {
+        cAddAppoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, SelectDistrict.class);
@@ -73,55 +106,55 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.notification.class);
-                startActivity(intent);
+//        notification.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.notification.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(Dashboard.this, "Go to Notifications", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-                Toast.makeText(Dashboard.this, "Go to Notifications", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        offers.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.offers.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(Dashboard.this, "Go to Offers", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        offers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.offers.class);
-                startActivity(intent);
+//        newsFeed.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Dashboard.this, news.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(Dashboard.this, "Go to News feed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-                Toast.makeText(Dashboard.this, "Go to Offers", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        products.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Dashboard.this, serchprod.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(Dashboard.this, "Go to Products", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        newsFeed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, news.class);
-                startActivity(intent);
-
-                Toast.makeText(Dashboard.this, "Go to News feed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        products.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, serchprod.class);
-                startActivity(intent);
-
-                Toast.makeText(Dashboard.this, "Go to Products", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.profile.class);
-                startActivity(intent);
-
-                Toast.makeText(Dashboard.this, "Go to Profile", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.profile.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(Dashboard.this, "Go to Profile", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 

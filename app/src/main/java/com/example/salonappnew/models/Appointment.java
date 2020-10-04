@@ -16,6 +16,13 @@ public class Appointment {
         this.customerEmail = customerEmail;
     }
 
+    public Appointment(String salonEmail, String date, String time, String customerEmail) {
+        this.salonEmail = salonEmail;
+        this.date = date;
+        this.time = time;
+        this.customerEmail = customerEmail;
+    }
+
     public Appointment(){
 
     }
@@ -61,4 +68,6 @@ public class Appointment {
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
     }
+
+
 }

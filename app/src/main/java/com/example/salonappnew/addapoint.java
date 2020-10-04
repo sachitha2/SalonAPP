@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.salonappnew.models.Appointment;
+import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.UserType;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,8 +39,9 @@ public class addapoint extends AppCompatActivity {
     private FirebaseDatabase mFirebaseInstant;
 
     FirebaseAuth mFirebaseAuth;
-
-    private Button btn,addAppoint;
+    String salonEmail;
+    TextView txtSalon;
+    private Button addAppoint;
     Button btn_date;
     TextView tvTimer2;
     int t2Hour,t2Minute;
@@ -58,6 +60,14 @@ public class addapoint extends AppCompatActivity {
         setContentView(R.layout.activity_addapoint);
 
 
+        //set salon in text view
+        Intent intent = getIntent();
+        salonEmail = intent.getStringExtra("salonEmail");
+
+
+        txtSalon = findViewById(R.id.txtSalonName);
+        txtSalon.setText(intent.getStringExtra("salonName"));
+
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         mFirebaseInstant = FirebaseDatabase.getInstance();
@@ -67,7 +77,6 @@ public class addapoint extends AppCompatActivity {
         userId = mFDb.push().getKey();
 
 
-        btn = (Button) findViewById(R.id.btn_sln);
         addAppoint = findViewById(R.id.btnAddAppointment);
 
         addAppoint.setOnClickListener(new View.OnClickListener() {
@@ -82,12 +91,7 @@ public class addapoint extends AppCompatActivity {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO SELECT salon
-            }
-        });
+
 
         mDisplayDate = (TextView) findViewById(R.id.btn_sub1);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +171,7 @@ public class addapoint extends AppCompatActivity {
 
     public void addData(){
 
-        Appointment appointment = new Appointment("2588","salonnn@gmail.com",date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
+        Appointment appointment = new Appointment(salonEmail,date,selectedTime,mFirebaseAuth.getCurrentUser().getEmail());
 
         mFDb.child("appointment").child(userId).setValue(appointment);
 

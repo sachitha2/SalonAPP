@@ -62,7 +62,8 @@ public class CustomerListAdapter extends BaseAdapter implements Filterable {
             public void onClick(View v) {
 
                 Intent intentCustomerProfile = new Intent(c,addapoint.class);
-                intentCustomerProfile.putExtra("salon", originalArray.get(position).getClass());
+                intentCustomerProfile.putExtra("salonEmail", originalArray.get(position).getEmail());
+                intentCustomerProfile.putExtra("salonName", originalArray.get(position).getCompanyName());
                 c.startActivity(intentCustomerProfile);
                 Toast.makeText(c, originalArray.get(position).getCompanyName() + " was clicked", Toast.LENGTH_SHORT).show();
             }

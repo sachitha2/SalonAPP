@@ -81,6 +81,13 @@ public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(c, EditAppointments.class);
+                intent.putExtra("salonName", originalArray.get(position).getSalonName());
+                intent.putExtra("salonEmail", originalArray.get(position).getSalonName());
+                intent.putExtra("key", originalArray.get(position).getId());
+                c.startActivity(intent);
+//                Toast.makeText(c, originalArray.get(position).getpName() + " edit was clicked", Toast.LENGTH_SHORT).show();
+                ((Activity) c).finish();
 
             }
         });

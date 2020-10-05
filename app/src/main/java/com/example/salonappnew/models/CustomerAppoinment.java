@@ -8,7 +8,7 @@ public class CustomerAppoinment {
     String time;
     String customerEmail;
     String id;
-
+    String salonEmail;
 
 
     public CustomerAppoinment(){
@@ -45,12 +45,13 @@ public class CustomerAppoinment {
         this.time = time;
     }
 
-    public CustomerAppoinment(String salonName, String date, String time, String customerEmail,String id) {
+    public CustomerAppoinment(String salonName, String date, String time, String customerEmail,String id,String salonEmail) {
         this.salonName = salonName;
         this.date = date;
         this.time = time;
         this.customerEmail = customerEmail;
         this.id = id;
+        this.salonEmail = salonEmail;
     }
 
     public String getCustomerEmail() {
@@ -68,5 +69,13 @@ public class CustomerAppoinment {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getSalonEmail() {
+        return salonEmail;
+    }
+
+    public void setSalonEmail(String salonEmail) {
+        this.salonEmail = salonEmail;
     }
 }

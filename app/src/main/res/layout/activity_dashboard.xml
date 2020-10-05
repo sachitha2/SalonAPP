@@ -325,15 +325,7 @@ android:id="@+id/drawer_layout"
 
 
             </GridLayout>
-            <Button
-                android:id="@+id/btnLogout"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="center"
-                android:layout_width="100dp"
-                android:text="Logout"
-                android:textAllCaps="true"
-                android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="match_parent"

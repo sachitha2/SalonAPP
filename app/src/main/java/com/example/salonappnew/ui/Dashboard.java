@@ -63,7 +63,9 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
+        //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
+        //nav end
         //Customer part
         cAddAppoint = findViewById(R.id.cAddAppointment);
         cMyAppoint = findViewById(R.id.cAppointments);
@@ -98,15 +100,7 @@ public class Dashboard extends AppCompatActivity {
         }
 
 
-        logout = findViewById(R.id.btnLogout);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                openLogin();
-            }
-        });
 
 
         cProduct.setOnClickListener(new View.OnClickListener() {
@@ -256,6 +250,8 @@ public class Dashboard extends AppCompatActivity {
     }
 
 
+    //nav start
+
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }
@@ -274,6 +270,12 @@ public class Dashboard extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
+    public void ClickLogout(View view){
+        Log.d("Data","Log out clicked");
+
+        logout(this);
+    }
+
     public void ClickHome(View view) {
         recreate();
     }
@@ -284,9 +286,7 @@ public class Dashboard extends AppCompatActivity {
     public void ClickAboutUs(View view){
         redirectActivity(this, about.class);
     }
-    public void logout(View view){
-        logout(this);
-    }
+
     public static void logout(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");
@@ -294,6 +294,7 @@ public class Dashboard extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth.getInstance().signOut();
                 activity.finishAffinity();
                 System.exit(0);
             }
@@ -318,4 +319,6 @@ public class Dashboard extends AppCompatActivity {
         super.onPause();
         closeDrawer(drawerLayout);
     }
+
+    //nav end
 }

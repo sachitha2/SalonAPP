@@ -82,6 +82,16 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         Log.d("Data ",URL+originalArray.get(position).getImg());
 
         Button btnViewProduct;
+        Button btnDelete;
+
+        btnDelete = row.findViewById(R.id.btnDelete);
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         btnViewProduct = row.findViewById(R.id.btnViewProduct);
 

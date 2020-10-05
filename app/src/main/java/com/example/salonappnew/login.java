@@ -100,27 +100,27 @@ public class login extends AppCompatActivity {
         }
     }
 
-    public  void fRegister(){
-            String email = emailId.getText().toString();
-            String pass = password.getText().toString();
-                if(validatePassAndEmail()){
-                    mFirebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(login.this,"Sign up failed", Toast.LENGTH_LONG).show();
-
-                            }else{
-
-                                Toast.makeText(login.this,"Sign up ok",Toast.LENGTH_LONG).show();
-                                openRegister();
-                                emailId.setText("");
-                                password.setText("");
-                            }
-                        }
-                    });
-                }
-    }
+//    public  void fRegister(){
+//            String email = emailId.getText().toString();
+//            String pass = password.getText().toString();
+//                if(validatePassAndEmail()){
+//                    mFirebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if(!task.isSuccessful()){
+//                                Toast.makeText(login.this,"Sign up failed", Toast.LENGTH_LONG).show();
+//
+//                            }else{
+//
+//                                Toast.makeText(login.this,"Sign up ok",Toast.LENGTH_LONG).show();
+//                                openRegister();
+//                                emailId.setText("");
+//                                password.setText("");
+//                            }
+//                        }
+//                    });
+//                }
+//    }
 
     public void openRegister(){
         Intent intent = new Intent(this, registeras.class);
@@ -142,8 +142,8 @@ public class login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 //                            progressBar.setVisibility(View.GONE);
-
                             checkUserAvailability();
+
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
@@ -183,9 +183,9 @@ public class login extends AppCompatActivity {
 
                 } else {
                     //bus number doesn't exists.
-                    openRegister();
+                    Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+//
                     progressDialog.dismiss();
-                    kill_activity();
                     Log.d("Data","Data not  found");
 
                 }

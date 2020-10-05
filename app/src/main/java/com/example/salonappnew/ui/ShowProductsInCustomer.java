@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.salonappnew.R;
+
 public class ShowProductsInCustomer extends AppCompatActivity {
 
     @Override

@@ -69,9 +69,9 @@ public class ProductShowInSalon extends AppCompatActivity  implements TextWatche
                 myList = new ArrayList<>();
 
                 for (DataSnapshot artistSnapShot : dataSnapshot.getChildren()){
-                    Product company = artistSnapShot.getValue(Product.class);
+                    Product product = artistSnapShot.getValue(Product.class);
 
-                    myList.add(company);
+                    myList.add(product);
                 }
 
                 myAdapter = new ProductListAdapter(ProductShowInSalon.this,myList);

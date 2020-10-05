@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -29,6 +30,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ProductListAdapter extends BaseAdapter implements Filterable {
+
+
 
 
     //Firebase storage
@@ -69,9 +72,25 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         TextView productName =row.findViewById(R.id.txtProductName);
         final ImageView simpleImageView = row.findViewById(R.id.simpleImageView);
 
+        TextView txtPrice = row.findViewById(R.id.txtPrice);
+        TextView txtRNo = row.findViewById(R.id.txtRNo);
+        TextView txtDescri = row.findViewById(R.id.txtDescri);
+        txtPrice.setText(originalArray.get(position).getPrice()+"");
+        txtRNo.setText(originalArray.get(position).getrNo());
+        txtDescri.setText("Description-"+originalArray.get(position).getDescription());
+
         Log.d("Data ",URL+originalArray.get(position).getImg());
 
+        Button btnViewProduct;
 
+        btnViewProduct = row.findViewById(R.id.btnViewProduct);
+
+        btnViewProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("data","you clicked a button in "+position);
+            }
+        });
 
         //take image url from firebase
 

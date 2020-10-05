@@ -18,6 +18,7 @@
 
  import com.example.salonappnew.models.Company;
  import com.example.salonappnew.models.Customer;
+ import com.example.salonappnew.models.District;
  import com.example.salonappnew.models.UserType;
  import com.example.salonappnew.ui.Dashboard;
  import com.google.android.gms.tasks.OnFailureListener;
@@ -30,11 +31,15 @@
  import com.google.firebase.storage.StorageReference;
  import com.google.firebase.storage.UploadTask;
 
+ import java.util.ArrayList;
+ import java.util.List;
  import java.util.UUID;
 
  public class addcompany extends AppCompatActivity {
 
 
+     Spinner featuresSelection;
+     Spinner dist;
      //Firebase storage
      FirebaseAuth mFirebaseAuth;
      FirebaseStorage storage;
@@ -43,6 +48,9 @@
      private FirebaseDatabase mFirebaseInstant;
      //my
      EditText eEmail,eName,ePhone,eAddress;
+
+     String district;
+     String category;
 
 
      private  String userId;
@@ -84,10 +92,73 @@
              }
          });
 
-         Spinner staticSpinner = (Spinner) findViewById(R.id.Category);
-         ArrayAdapter<CharSequence> staticAdapter = ArrayAdapter.createFromResource(this, R.array.Category, android.R.layout.simple_spinner_item);
-         staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-         staticSpinner.setAdapter(staticAdapter);
+//         Spinner staticSpinner = (Spinner) findViewById(R.id.Category);
+//         ArrayAdapter<CharSequence> staticAdapter = ArrayAdapter.createFromResource(this, R.array.Category, android.R.layout.simple_spinner_item);
+//         staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//         staticSpinner.setAdapter(staticAdapter);
+
+           featuresSelection = findViewById(R.id.Category);
+          ArrayAdapter<CharSequence> featuresAdapter;
+          List<CharSequence> featuresList;
+
+         featuresList = new ArrayList<CharSequence>();
+         featuresAdapter = new ArrayAdapter<CharSequence>(this,
+                 android.R.layout.simple_spinner_item, featuresList);
+         featuresAdapter.setDropDownViewResource(
+                 android.R.layout.simple_spinner_dropdown_item);
+         featuresSelection = ((Spinner) addcompany.this
+                 .findViewById(R.id.Category));
+         featuresSelection.setAdapter(featuresAdapter);
+
+
+         featuresAdapter.add("Hair and beauty");
+         featuresAdapter.add("Eye care,lip and neck");
+         featuresAdapter.add("Bridal dressing");
+         featuresAdapter.add("Pedicure");
+
+
+          dist = findViewById(R.id.spinnerDistrict);
+         ArrayAdapter<CharSequence> dAdapter;
+         List<CharSequence> daList;
+
+         daList = new ArrayList<CharSequence>();
+         dAdapter = new ArrayAdapter<CharSequence>(this,
+                 android.R.layout.simple_spinner_item, daList);
+         dAdapter.setDropDownViewResource(
+                 android.R.layout.simple_spinner_dropdown_item);
+         dist = ((Spinner) addcompany.this
+                 .findViewById(R.id.spinnerDistrict));
+         dist.setAdapter(dAdapter);
+
+
+
+         dAdapter.add("Jaffna");
+         dAdapter.add("Kilinochchi");
+         dAdapter.add("Mannar");
+         dAdapter.add("Mullaitivu");
+         dAdapter.add("Vavuniya");
+         dAdapter.add("Puttalam");
+         dAdapter.add("Kurunegala");
+         dAdapter.add("Gampaha");
+         dAdapter.add("Colombo");
+         dAdapter.add("Kalutara");
+         dAdapter.add("Anuradhapura");
+         dAdapter.add("Polonnaruwa");
+         dAdapter.add("Matale");
+         dAdapter.add("Kandy");
+         dAdapter.add("Nuwara Eliya");
+         dAdapter.add("Kegalle");
+
+         dAdapter.add("Trincomalee");
+         dAdapter.add("Batticaloa");
+         dAdapter.add("Ampara");
+         dAdapter.add("Badulla");
+         dAdapter.add("Monaragala");
+         dAdapter.add("Hambantota");
+         dAdapter.add("Matara");
+         dAdapter.add("Galle");
+
+
 
          button = (Button) findViewById(R.id.btn_sub);
 
@@ -164,13 +235,15 @@
         String phone;
         String email;
         String address;
+        String d = dist.getSelectedItem().toString();
+        String c = featuresSelection.getSelectedItem().toString();;
 
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
         address = eAddress.getText().toString();
 
-        Company company = new Company(name,address,phone,email);
+        Company company = new Company(name,address,phone,email,d,c);
 
         UserType userType = new UserType(email,"SALON");
 

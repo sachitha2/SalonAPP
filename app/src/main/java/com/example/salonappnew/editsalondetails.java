@@ -55,7 +55,7 @@ public class editsalondetails extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Company company = new Company(name.getText().toString(),address.getText().toString(),phone.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail());
+                Company company = new Company(name.getText().toString(),address.getText().toString(),phone.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail(),"","");
                 mFDb.child("salon").child(key).setValue(company);
                 Toast.makeText(getApplicationContext(), "Profile updated", Toast.LENGTH_LONG).show();
             }

@@ -59,6 +59,16 @@
             android:entries="@array/Category"
             android:spinnerMode="dialog" />
 
+        <Spinner
+            android:id="@+id/spinnerDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/Category"
+            android:spinnerMode="dialog" />
+
         <EditText
             android:id="@+id/eTxtAddress"
             android:layout_width="match_parent"

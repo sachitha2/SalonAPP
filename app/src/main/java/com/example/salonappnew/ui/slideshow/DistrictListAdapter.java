@@ -105,7 +105,7 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
 
                 for (int i = 0; i < tmpArray.size(); i++) {
                     if (tmpArray.get(i).getCompanyName().toUpperCase().contains(constraint)) {
-                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail());
+                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail(),"","");
 
 
 
@@ -117,7 +117,7 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
                     }
 
                     if (tmpArray.get(i).getPhone().toUpperCase().contains(constraint)) {
-                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail());
+                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getCompanyName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail(),"","");
 
 
 

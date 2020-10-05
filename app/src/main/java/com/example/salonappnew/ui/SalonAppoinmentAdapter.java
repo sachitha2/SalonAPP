@@ -1,9 +1,6 @@
 package com.example.salonappnew.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.salonappnew.R;
-import com.example.salonappnew.addapoint;
-import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.CustomerAppoinment;
 
 import java.util.ArrayList;
 
-public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable {
+public class SalonAppoinmentAdapter extends BaseAdapter implements Filterable {
 
 
     Context c;
@@ -31,7 +25,7 @@ public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable
     String type;
 
 
-    public CustomerAppoinmentAdapter(Context c, ArrayList<CustomerAppoinment> originalArray){
+    public SalonAppoinmentAdapter(Context c, ArrayList<CustomerAppoinment> originalArray){
         this.c = c;
         this.originalArray = originalArray;
         this.tmpArray = originalArray;

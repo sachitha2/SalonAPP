@@ -1,6 +1,8 @@
 package com.example.salonappnew.ui;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +14,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.salonappnew.R;
-import com.example.salonappnew.models.CustomerAppoinment;
 import com.example.salonappnew.models.Product;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -95,10 +97,18 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
         btnViewProduct = row.findViewById(R.id.btnViewProduct);
 
+
+        //This is edit
         btnViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("data","you clicked a button in "+position);
+
+//                Intent intent = new Intent(c, editproduct.class);
+//                intent.putExtra("district", originalArray.get(position).getName());
+//                c.startActivity(intent);
+                Toast.makeText(c, originalArray.get(position).getpName() + "fbrgbv edit was clicked", Toast.LENGTH_SHORT).show();
+//                ((Activity) c).finish();
             }
         });
 
@@ -134,7 +144,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    //TODO setup on click
+
             }
         });
 

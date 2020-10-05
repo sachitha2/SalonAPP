@@ -3,7 +3,9 @@ package com.example.salonappnew;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ import java.util.UUID;
 public class addproduct extends AppCompatActivity {
 
 
+
+    Context c;
     //Firebase storage
     FirebaseAuth mFirebaseAuth;
     FirebaseStorage storage;
@@ -125,7 +129,7 @@ public class addproduct extends AppCompatActivity {
         mFDb.child("products").child(userId).setValue(product).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
+                ((Activity) c).finish();
             }
         });
 
@@ -193,4 +197,6 @@ public class addproduct extends AppCompatActivity {
                     });
         }
     }
+
+
 }

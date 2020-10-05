@@ -2,10 +2,14 @@ package com.example.salonappnew.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
+import com.example.salonappnew.about;
 import com.example.salonappnew.addproduct;
 import com.example.salonappnew.models.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +41,8 @@ import com.squareup.picasso.Picasso;
 import java.util.UUID;
 
 public class EditProduct extends AppCompatActivity {
+
+    DrawerLayout drawerLayout;
 
     Context c;
     //Firebase storage
@@ -59,6 +66,10 @@ public class EditProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
+
+        //nav start
+        drawerLayout = findViewById(R.id.drawer_layout);
+        //nav end
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -214,4 +225,76 @@ public class EditProduct extends AppCompatActivity {
         }
     }
 
+
+    //nav start
+
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+
+    public static void openDrawer(DrawerLayout drawerLayout){
+        drawerLayout.openDrawer(GravityCompat.START);
+
+    }
+
+    public void ClickLogo(View view){
+        closeDrawer(drawerLayout);
+    }
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+    public void ClickLogout(View view){
+        Log.d("Data","Log out clicked");
+
+        logout(this);
+    }
+
+    public void ClickHome(View view) {
+        redirectActivity(this, Dashboard.class);
+    }
+    public void ClickDashboard(View view){
+        redirectActivity(this, Dashboard.class);
+
+    }
+    public void ClickAboutUs(View view){
+        redirectActivity(this, about.class);
+    }
+
+    public static void logout(final Activity activity){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you Sure youb want to logout?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth.getInstance().signOut();
+                activity.finishAffinity();
+                System.exit(0);
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity,aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
+    }
+
+    //nav end
 }

@@ -1,6 +1,7 @@
 package com.example.salonappnew.ui;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -104,11 +105,11 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
             public void onClick(View view) {
                 Log.d("data","you clicked a button in "+position);
 
-//                Intent intent = new Intent(c, editproduct.class);
+                Intent intent = new Intent(c, EditProduct.class);
 //                intent.putExtra("district", originalArray.get(position).getName());
-//                c.startActivity(intent);
-                Toast.makeText(c, originalArray.get(position).getpName() + "fbrgbv edit was clicked", Toast.LENGTH_SHORT).show();
-//                ((Activity) c).finish();
+                c.startActivity(intent);
+                Toast.makeText(c, originalArray.get(position).getpName() + " edit was clicked", Toast.LENGTH_SHORT).show();
+                ((Activity) c).finish();
             }
         });
 

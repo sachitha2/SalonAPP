@@ -49,7 +49,7 @@ public class SalonAppoinmentAdapter extends BaseAdapter implements Filterable {
 
 
 
-        txtSalonName.setText(originalArray.get(position).getSalonName());
+        txtSalonName.setText(originalArray.get(position).getCustomerEmail());
 
 
         txtDate.setText(originalArray.get(position).getDate());
@@ -58,7 +58,7 @@ public class SalonAppoinmentAdapter extends BaseAdapter implements Filterable {
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    //TODO setup on click
+
             }
         });
 

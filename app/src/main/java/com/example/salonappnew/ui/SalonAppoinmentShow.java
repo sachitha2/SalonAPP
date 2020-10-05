@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class SalonAppoinmentShow extends AppCompatActivity  implements TextWatcher {
 
     ArrayList<CustomerAppoinment> myList;
-    CustomerAppoinmentAdapter myAdapter;
+    SalonAppoinmentAdapter myAdapter;
     EditText searchCustomers;
     ListView customerList;
 
@@ -92,7 +92,7 @@ public class SalonAppoinmentShow extends AppCompatActivity  implements TextWatch
 
                 }
 
-                myAdapter = new CustomerAppoinmentAdapter(SalonAppoinmentShow.this,myList);
+                myAdapter = new SalonAppoinmentAdapter(SalonAppoinmentShow.this,myList);
 
                 customerList.setAdapter(myAdapter);
             }

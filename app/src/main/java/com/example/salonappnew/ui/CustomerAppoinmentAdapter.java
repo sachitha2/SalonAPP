@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -17,11 +18,23 @@ import com.example.salonappnew.R;
 import com.example.salonappnew.addapoint;
 import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.CustomerAppoinment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable {
 
+
+    //Firebase storage
+    FirebaseAuth mFirebaseAuth;
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    private DatabaseReference mFDb;
+    private FirebaseDatabase mFirebaseInstant;
 
     Context c;
     ArrayList<CustomerAppoinment> originalArray,tmpArray;
@@ -52,6 +65,25 @@ public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable
         TextView txtSalonName =row.findViewById(R.id.txtSalonName);
         TextView txtDate = row.findViewById(R.id.txtDate);
         TextView txtTime = row.findViewById(R.id.txtTime);
+        Button btnEdit = row.findViewById(R.id.btnEdit);
+        Button btnDel = row.findViewById(R.id.btnDelete);
+
+        mFirebaseInstant = FirebaseDatabase.getInstance();
+        mFDb = mFirebaseInstant.getReference("users");
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFDb.child("appointment").child(originalArray.get(position).getId()).removeValue();
+            }
+        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
 

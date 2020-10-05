@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.CustomerProducts"></activity>
+        <activity android:name=".ui.ShowProductsInCustomer"></activity>
+        <activity android:name=".ui.CustomerProducts" />
         <activity android:name=".ui.EditAppointments" />
         <activity android:name=".ui.EditProduct" />
         <activity android:name=".ui.SalonAppoinmentShow" />
@@ -63,8 +64,8 @@
         <activity android:name=".addapoint" />
         <activity android:name=".about" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

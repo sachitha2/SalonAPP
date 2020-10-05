@@ -3,6 +3,7 @@ package com.example.salonappnew.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable
     ///filter
     CustomFilter cs;
     ///filter
-
+    String type;
 
 
     public CustomerAppoinmentAdapter(Context c, ArrayList<CustomerAppoinment> originalArray){
@@ -53,7 +54,12 @@ public class CustomerAppoinmentAdapter extends BaseAdapter implements Filterable
         TextView txtTime = row.findViewById(R.id.txtTime);
 
 
+
         txtSalonName.setText(originalArray.get(position).getSalonName());
+
+        //TODO in salon -> customer name
+        //TODO in customer -> salon name
+
         txtDate.setText(originalArray.get(position).getDate());
 
         txtTime.setText(originalArray.get(position).getTime());

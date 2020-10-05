@@ -8,7 +8,6 @@ public class CustomerAppoinment {
     String time;
     String customerEmail;
 
-    String mode = "CUSTOMER";
 
 
     public CustomerAppoinment(){
@@ -50,7 +49,6 @@ public class CustomerAppoinment {
         this.date = date;
         this.time = time;
         this.customerEmail = customerEmail;
-        this.mode = "SALON";
     }
 
     public String getCustomerEmail() {
@@ -61,11 +59,5 @@ public class CustomerAppoinment {
         this.customerEmail = customerEmail;
     }
 
-    public String getMode() {
-        return mode;
-    }
 
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
 }

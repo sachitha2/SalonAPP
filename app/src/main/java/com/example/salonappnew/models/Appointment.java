@@ -18,20 +18,6 @@ public class Appointment {
         this.salonName = salonName;
     }
 
-//    public Appointment(String salonId, String salonEmail, String date, String time, String customerEmail) {
-//        this.salonId = salonId;
-//        this.salonEmail = salonEmail;
-//        this.date = date;
-//        this.time = time;
-//        this.customerEmail = customerEmail;
-//    }
-
-//    public Appointment(String salonEmail, String date, String time, String customerEmail) {
-//        this.salonEmail = salonEmail;
-//        this.date = date;
-//        this.time = time;
-//        this.customerEmail = customerEmail;
-//    }
 
     public Appointment( String salonEmail, String date, String time, String customerEmail, String salonName,String customerName) {
         this.salonEmail = salonEmail;

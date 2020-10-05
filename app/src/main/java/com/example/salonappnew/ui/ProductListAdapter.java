@@ -49,7 +49,6 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
 
 
-    String URL = "https://firebasestorage.googleapis.com/v0/b/salonapp-d95d0.appspot.com/o/";
 
     public ProductListAdapter(Context c, ArrayList<Product> originalArray){
         this.c = c;
@@ -79,17 +78,18 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
         txtRNo.setText(originalArray.get(position).getrNo());
         txtDescri.setText("Description-"+originalArray.get(position).getDescription());
 
-        Log.d("Data ",URL+originalArray.get(position).getImg());
+//        Log.d("Data ",URL+originalArray.get(position).getImg());
 
         Button btnViewProduct;
         Button btnDelete;
-
+        mFirebaseInstant = FirebaseDatabase.getInstance();
+        mFDb = mFirebaseInstant.getReference("users");
         btnDelete = row.findViewById(R.id.btnDelete);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mFDb.child("products").child(originalArray.get(position).getId()).removeValue();
             }
         });
 
@@ -174,7 +174,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
 
                 for (int i = 0; i < tmpArray.size(); i++) {
                     if (tmpArray.get(i).getpName().toUpperCase().contains(constraint)) {
-                        Product singleRow = new Product(tmpArray.get(i).getpName(),"",50,"","","");
+                        Product singleRow = new Product(tmpArray.get(i).getpName(),"",50,"","","","");
                         filters.add(singleRow);
 
 

@@ -119,7 +119,7 @@ public class addproduct extends AppCompatActivity {
     public void addData(String img){
 
 
-        Product product = new Product(txtProductName.getText().toString(),txtRNo.getText().toString(),Float.parseFloat(txtPrice.getText().toString()),txtDescri.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail(),img);
+        Product product = new Product(txtProductName.getText().toString(),txtRNo.getText().toString(),Float.parseFloat(txtPrice.getText().toString()),txtDescri.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail(),img,userId);
         Toast.makeText(addproduct.this,"Product added",Toast.LENGTH_LONG).show();
 
         mFDb.child("products").child(userId).setValue(product).addOnCompleteListener(new OnCompleteListener<Void>() {

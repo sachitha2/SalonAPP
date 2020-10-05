@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -86,6 +87,7 @@ public class SalonAppoinmentShow extends AppCompatActivity  implements TextWatch
 
                 for (DataSnapshot artistSnapShot : dataSnapshot.getChildren()){
                     CustomerAppoinment cA = artistSnapShot.getValue(CustomerAppoinment.class);
+                    Log.d("Data",cA.getCustomerEmail());
                     myList.add(cA);
 
                 }

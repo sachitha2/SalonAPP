@@ -6,6 +6,7 @@ public class CustomerAppoinment {
     String salonName;
     String date;
     String time;
+    String customerEmail;
 
 
     public CustomerAppoinment(){
@@ -40,5 +41,20 @@ public class CustomerAppoinment {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public CustomerAppoinment(String salonName, String date, String time, String customerEmail) {
+        this.salonName = salonName;
+        this.date = date;
+        this.time = time;
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 }

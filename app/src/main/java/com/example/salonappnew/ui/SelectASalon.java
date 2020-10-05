@@ -2,9 +2,11 @@ package com.example.salonappnew.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -15,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
     CustomerListAdapter myAdapter;
     EditText searchCustomers;
     ListView customerList;
+    String district;
 
     DatabaseReference databaseReference;
     @Override
@@ -35,8 +39,15 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
 
         customerList = findViewById(R.id.listCustomers);
 
+        //get intent
+        Intent intent = getIntent();
+
+        district = intent.getStringExtra("district");
+
+        Log.d("Data",   "Intent "+intent.getStringExtra("district"));
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("users/salon");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
         searchCustomers.addTextChangedListener(this);
 
@@ -64,7 +75,10 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
     protected void onStart() {
         super.onStart();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        Query data = databaseReference.child("salon").orderByChild("district").startAt(district)
+                .endAt(district+"\uf8ff");
+
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 

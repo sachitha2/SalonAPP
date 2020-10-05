@@ -49,7 +49,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
     ///filter
     CustomFilter cs;
     ///filter
-
+    String img = "";
 
 
 
@@ -106,7 +106,12 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
                 Log.d("data","you clicked a button in "+position);
 
                 Intent intent = new Intent(c, EditProduct.class);
-//                intent.putExtra("district", originalArray.get(position).getName());
+                intent.putExtra("productName", originalArray.get(position).getpName());
+                intent.putExtra("rno", originalArray.get(position).getrNo());
+                intent.putExtra("price", originalArray.get(position).getPrice()+"");
+                intent.putExtra("description", originalArray.get(position).getDescription());
+                intent.putExtra("img", img);
+                intent.putExtra("key", originalArray.get(position).getId());
                 c.startActivity(intent);
                 Toast.makeText(c, originalArray.get(position).getpName() + " edit was clicked", Toast.LENGTH_SHORT).show();
                 ((Activity) c).finish();
@@ -125,6 +130,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     Log.d("Data",""+uri.toString());
+                    img = uri.toString();
 
                     Picasso.get().load(uri).into(simpleImageView);
                 }

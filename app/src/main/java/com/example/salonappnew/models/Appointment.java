@@ -8,6 +8,7 @@ public class Appointment {
     String time;
     String customerEmail;
     String salonName;
+    String customerName;
 
     public String getSalonName() {
         return salonName;
@@ -32,12 +33,13 @@ public class Appointment {
 //        this.customerEmail = customerEmail;
 //    }
 
-    public Appointment( String salonEmail, String date, String time, String customerEmail, String salonName) {
+    public Appointment( String salonEmail, String date, String time, String customerEmail, String salonName,String customerName) {
         this.salonEmail = salonEmail;
         this.date = date;
         this.time = time;
         this.customerEmail = customerEmail;
         this.salonName = salonName;
+        this.customerName = customerName;
     }
 
     public Appointment(){

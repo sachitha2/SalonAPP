@@ -21,8 +21,11 @@
  import com.example.salonappnew.models.District;
  import com.example.salonappnew.models.UserType;
  import com.example.salonappnew.ui.Dashboard;
+ import com.google.android.gms.tasks.OnCompleteListener;
  import com.google.android.gms.tasks.OnFailureListener;
  import com.google.android.gms.tasks.OnSuccessListener;
+ import com.google.android.gms.tasks.Task;
+ import com.google.firebase.auth.AuthResult;
  import com.google.firebase.auth.FirebaseAuth;
  import com.google.firebase.database.DatabaseReference;
  import com.google.firebase.database.FirebaseDatabase;
@@ -47,7 +50,7 @@
      private DatabaseReference mFDb;
      private FirebaseDatabase mFirebaseInstant;
      //my
-     EditText eEmail,eName,ePhone,eAddress;
+     EditText eEmail,eName,ePhone,eAddress,password,passConfirm;
 
      String district;
      String category;
@@ -73,6 +76,8 @@
          ePhone = findViewById(R.id.eTxtPNumber);
          eEmail = findViewById(R.id.eTxtEmail);
          eAddress = findViewById(R.id.eTxtAddress);
+         password = findViewById(R.id.txtPass);
+         passConfirm = findViewById(R.id.txtPassConfirm);
 
          mFirebaseInstant = FirebaseDatabase.getInstance();
          mFDb = mFirebaseInstant.getReference("users");
@@ -167,7 +172,7 @@
                      Toast.makeText(addcompany.this,"data valid",Toast.LENGTH_LONG).show();
 
                      //add salon
-                     addData();
+                     fRegister();
                  }
              }
          });
@@ -199,13 +204,16 @@
              progressDialog.setTitle("Uploading...");
              progressDialog.show();
 
-             StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+             final String imgId = "images/"+ UUID.randomUUID().toString();
+
+             StorageReference ref = storageReference.child(imgId);
              //TODO save image reference
 
              ref.putFile(imageUri)
                      .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                          @Override
                          public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                             addData(imgId);
                              progressDialog.dismiss();
                              Toast.makeText(addcompany.this, "Uploaded", Toast.LENGTH_SHORT).show();
                          }
@@ -228,7 +236,7 @@
          }
      }
 
-    public void addData(){
+    public void addData(String imgId){
         String name;
         String phone;
         String email;
@@ -241,7 +249,7 @@
         email = eEmail.getText().toString();
         address = eAddress.getText().toString();
 
-        Company company = new Company(name,address,phone,email,d,c,"");
+        Company company = new Company(name,address,phone,email,d,c,imgId);
 
         UserType userType = new UserType(email,"SALON");
 
@@ -258,11 +266,15 @@
          String phone;
          String email;
          String address;
+         String pass;
+         String passC;
 
          name = eName.getText().toString();
          phone = ePhone.getText().toString();
          email = eEmail.getText().toString();
          address = eAddress.getText().toString();
+         pass = password.getText().toString();
+         passC = passConfirm.getText().toString();
 
          if(name.isEmpty()){
              eName.setError("Please enter a Name");
@@ -282,6 +294,20 @@
          else if(email.isEmpty()){
              eEmail.setError("Please provide a email");
              eEmail.requestFocus();
+             return false;
+         }else if(pass.isEmpty()){
+             password.setError("Please provide a Password");
+             password.requestFocus();
+             return false;
+         }else if(passC.isEmpty()){
+             passConfirm.setError("Please provide a Password");
+             passConfirm.requestFocus();
+             return false;
+         }else if(!passC.equals(pass)){
+             Toast.makeText(addcompany.this,"Please Enter same password in both fields",Toast.LENGTH_LONG).show();
+             return false;
+         }else if(imageUri == null){
+             Toast.makeText(addcompany.this,"Please Select a Image",Toast.LENGTH_LONG).show();
              return false;
          }
          else{
@@ -303,5 +329,23 @@
      }
 
 
+
+     public  void fRegister(){
+         String email = eEmail.getText().toString();
+         String pass = password.getText().toString();
+         mFirebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(addcompany.this, new OnCompleteListener<AuthResult>() {
+             @Override
+             public void onComplete(@NonNull Task<AuthResult> task) {
+                 if(!task.isSuccessful()){
+                     Toast.makeText(addcompany.this,"Sign up failed", Toast.LENGTH_LONG).show();
+
+                 }else{
+
+                     Toast.makeText(addcompany.this,"Sign up ok",Toast.LENGTH_LONG).show();
+                     uploadImage();
+                 }
+             }
+         });
+     }
 
  }

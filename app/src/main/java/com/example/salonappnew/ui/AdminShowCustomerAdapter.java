@@ -68,15 +68,17 @@ public class AdminShowCustomerAdapter extends BaseAdapter implements Filterable 
 
         View row = inflater.inflate(R.layout.admin_show_customer_list,null);
 
-        TextView productName =row.findViewById(R.id.txtProductName);
         final ImageView simpleImageView = row.findViewById(R.id.simpleImageView);
 
-        TextView txtPrice = row.findViewById(R.id.txtPrice);
-        TextView txtRNo = row.findViewById(R.id.txtRNo);
-        TextView txtDescri = row.findViewById(R.id.txtDescri);
-        txtPrice.setText(originalArray.get(position).getPhone()+"");
-        txtRNo.setText(originalArray.get(position).getName());
-        txtDescri.setText("Description-"+originalArray.get(position).getPhone());
+        TextView txtName = row.findViewById(R.id.txtName);
+        TextView txtEmail = row.findViewById(R.id.txtEmail);
+        TextView txtGender = row.findViewById(R.id.txtGender);
+        TextView txtPhone = row.findViewById(R.id.txtPhone);
+
+        txtName.setText(originalArray.get(position).getName());
+        txtEmail.setText(originalArray.get(position).getEmail());
+        txtGender.setText(originalArray.get(position).getGender());
+        txtPhone.setText(originalArray.get(position).getPhone());
 
 //        Log.d("Data ",URL+originalArray.get(position).getImg());
 
@@ -117,7 +119,7 @@ public class AdminShowCustomerAdapter extends BaseAdapter implements Filterable 
 //        final Uri result = storageReference.child("images/05f1a198-6a05-441b-a4d9-9bbb4f53d037").getDownloadUrl().getResult();
 //        Log.d("Data","Image reference "+result);
 
-        productName.setText(originalArray.get(position).getName());
+
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

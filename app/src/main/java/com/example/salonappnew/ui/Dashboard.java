@@ -92,14 +92,20 @@ public class Dashboard extends AppCompatActivity {
         adminCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO  admin company show part
+                Intent intent = new Intent(Dashboard.this, AdminShowCompany.class);
+                startActivity(intent);
+
+                Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
             }
         });
 
         adminCustomers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO admin customer show part
+                Intent intent = new Intent(Dashboard.this, AdminShowCustomers.class);
+                startActivity(intent);
+
+                Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
             }
         });
 

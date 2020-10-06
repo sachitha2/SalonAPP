@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.models.Company;
-import com.example.salonappnew.models.Product;
+import com.example.salonappnew.models.Customer;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
+public class AdminShowCustomerAdapter extends BaseAdapter implements Filterable {
 
 
 
@@ -42,7 +42,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
     private FirebaseDatabase mFirebaseInstant;
 
     Context c;
-    ArrayList<Company> originalArray,tmpArray;
+    ArrayList<Customer> originalArray,tmpArray;
     ///filter
     CustomFilter cs;
     ///filter
@@ -50,7 +50,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
 
 
 
-    public AdminShowCompanyAdapter(Context c, ArrayList<Company> originalArray){
+    public AdminShowCustomerAdapter(Context c, ArrayList<Customer> originalArray){
         this.c = c;
         this.originalArray = originalArray;
         this.tmpArray = originalArray;
@@ -66,7 +66,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View row = inflater.inflate(R.layout.admin_show_company,null);
+        View row = inflater.inflate(R.layout.admin_show_customer_list,null);
 
         TextView productName =row.findViewById(R.id.txtProductName);
         final ImageView simpleImageView = row.findViewById(R.id.simpleImageView);
@@ -74,8 +74,8 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
         TextView txtPrice = row.findViewById(R.id.txtPrice);
         TextView txtRNo = row.findViewById(R.id.txtRNo);
         TextView txtDescri = row.findViewById(R.id.txtDescri);
-        txtPrice.setText(originalArray.get(position).getCompanyName()+"");
-        txtRNo.setText(originalArray.get(position).getAddress());
+        txtPrice.setText(originalArray.get(position).getPhone()+"");
+        txtRNo.setText(originalArray.get(position).getName());
         txtDescri.setText("Description-"+originalArray.get(position).getPhone());
 
 //        Log.d("Data ",URL+originalArray.get(position).getImg());
@@ -94,8 +94,8 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        if(originalArray.get(position).getImg() != null){
-            storageReference.child(originalArray.get(position).getImg()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        if(originalArray.get(position).getImgUrl() != null){
+            storageReference.child(originalArray.get(position).getImgUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
@@ -117,7 +117,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
 //        final Uri result = storageReference.child("images/05f1a198-6a05-441b-a4d9-9bbb4f53d037").getDownloadUrl().getResult();
 //        Log.d("Data","Image reference "+result);
 
-        productName.setText(originalArray.get(position).getCompanyName());
+        productName.setText(originalArray.get(position).getName());
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,11 +157,11 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
                 constraint = constraint.toString().toUpperCase();
 
 
-                ArrayList<Company> filters = new ArrayList<>();
+                ArrayList<Customer> filters = new ArrayList<>();
 
                 for (int i = 0; i < tmpArray.size(); i++) {
-                    if (tmpArray.get(i).getCompanyName().toUpperCase().contains(constraint)) {
-                        Company singleRow = new Company(tmpArray.get(i).getCompanyName(),tmpArray.get(i).getAddress(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail(),tmpArray.get(i).getDistrict(),tmpArray.get(i).getCategory(),tmpArray.get(i).getImg());
+                    if (tmpArray.get(i).getName().toUpperCase().contains(constraint)) {
+                        Customer singleRow = new Customer(tmpArray.get(i).getName(),tmpArray.get(i).getPhone(),tmpArray.get(i).getEmail(),tmpArray.get(i).getGender(),"",tmpArray.get(i).getImgUrl());
                         filters.add(singleRow);
 
 
@@ -184,7 +184,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            originalArray  = (ArrayList<Company>)results.values;
+            originalArray  = (ArrayList<Customer>)results.values;
             notifyDataSetChanged();
         }
     }

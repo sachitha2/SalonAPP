@@ -23,9 +23,14 @@ public class Customer {
         return email;
     }
 
-    public String isGender() {
+
+    public String getGender() {
         return gender;
     }
+
+//    public String isGender() {
+//        return gender;
+//    }
 
     public String getPassword() {
         return password;

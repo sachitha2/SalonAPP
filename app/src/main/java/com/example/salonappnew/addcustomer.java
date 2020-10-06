@@ -1,5 +1,6 @@
 package com.example.salonappnew;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,9 @@ import android.widget.Toast;
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +31,7 @@ public class addcustomer extends AppCompatActivity {
     private FirebaseDatabase mFirebaseInstant;
     private Button button;
     private  String userId;
-    EditText eEmail,eName,ePhone;
+    EditText eEmail,eName,ePhone,password,passConfirm;
     FirebaseAuth mFirebaseAuth;
     boolean gender;
     RadioButton gMale;
@@ -49,6 +53,8 @@ public class addcustomer extends AppCompatActivity {
         eName = findViewById(R.id.editTextTextPersonName);
         ePhone = findViewById(R.id.editTextTextPersonName4);
         eEmail = findViewById(R.id.eTxtEmail);
+        password = findViewById(R.id.txtPass);
+        passConfirm = findViewById(R.id.txtPassConfirm);
 
 
         gMale = findViewById(R.id.rMale);
@@ -67,7 +73,8 @@ public class addcustomer extends AppCompatActivity {
                     Toast.makeText(addcustomer.this,"data valid",Toast.LENGTH_LONG).show();
 
                       //add customer
-                        addData("Image url here");
+//                        addData("Image url here");
+                    fRegister();
                 }
             }
         });
@@ -118,11 +125,14 @@ public class addcustomer extends AppCompatActivity {
         String name;
         String phone;
         String email;
+        String pass;
+        String passC;
 
-        //TODO reversed because merging
         name = eName.getText().toString();
         phone = ePhone.getText().toString();
         email = eEmail.getText().toString();
+        pass = password.getText().toString();
+        passC = passConfirm.getText().toString();
 
         if(name.isEmpty()){
             eName.setError("Please enter a Name");
@@ -136,6 +146,17 @@ public class addcustomer extends AppCompatActivity {
        else if(email.isEmpty()){
             eEmail.setError("Please provide a email");
             eEmail.requestFocus();
+            return false;
+        }else if(pass.isEmpty()){
+            password.setError("Please provide a Password");
+            password.requestFocus();
+            return false;
+        }else if(passC.isEmpty()){
+            passConfirm.setError("Please provide a Password");
+            passConfirm.requestFocus();
+            return false;
+        }else if(!passC.equals(pass)){
+            Toast.makeText(addcustomer.this,"Please Enter same password in both fields",Toast.LENGTH_LONG).show();
             return false;
         }
        else if(!(gMale.isChecked() || gFmale.isChecked())){
@@ -188,6 +209,23 @@ public class addcustomer extends AppCompatActivity {
         eEmail.setText("");
     }
 
-    //TODO need to add image upload part
+      public  void fRegister(){
+            String email = eEmail.getText().toString();
+            String pass = password.getText().toString();
+                    mFirebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(addcustomer.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(addcustomer.this,"Sign up failed", Toast.LENGTH_LONG).show();
+
+                            }else{
+
+                                Toast.makeText(addcustomer.this,"Sign up ok",Toast.LENGTH_LONG).show();
+                                //TODO
+                            }
+                        }
+                    });
+                }
+
 }
 

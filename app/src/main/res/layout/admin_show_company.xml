@@ -14,10 +14,10 @@
         />
 
     <TextView
-        android:id="@+id/txtProductName"
+        android:id="@+id/txtSalonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="10dp"
         android:text="product name"
         android:textColor="#FF0000"
         android:textAlignment="center"
@@ -35,9 +35,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:text="Price"/>
+            android:text="Address"/>
         <TextView
-            android:id="@+id/txtPrice"
+            android:id="@+id/txtAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
@@ -54,9 +54,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="20dp"
-            android:text="RNo"/>
+            android:text="District"/>
         <TextView
-            android:id="@+id/txtRNo"
+            android:id="@+id/txtDistrict"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
@@ -64,15 +64,69 @@
             android:text=""/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtDescri"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="heloo"
-        android:textSize="20dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="Email"/>
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:layout_weight="0.5"
+            android:text=""/>
+    </LinearLayout>
 
-        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="Phone"/>
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:layout_weight="0.5"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="Category"/>
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:layout_weight="0.5"
+            android:text=""/>
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

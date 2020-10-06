@@ -68,15 +68,26 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
 
         View row = inflater.inflate(R.layout.admin_show_company,null);
 
-        TextView productName =row.findViewById(R.id.txtProductName);
+
         final ImageView simpleImageView = row.findViewById(R.id.simpleImageView);
 
-        TextView txtPrice = row.findViewById(R.id.txtPrice);
-        TextView txtRNo = row.findViewById(R.id.txtRNo);
-        TextView txtDescri = row.findViewById(R.id.txtDescri);
-        txtPrice.setText(originalArray.get(position).getCompanyName()+"");
-        txtRNo.setText(originalArray.get(position).getAddress());
-        txtDescri.setText("Description-"+originalArray.get(position).getPhone());
+        TextView txtSalonName =row.findViewById(R.id.txtSalonName);
+        TextView txtAddress =row.findViewById(R.id.txtAddress);
+        TextView txtDistrict =row.findViewById(R.id.txtDistrict);
+        TextView txtEmail =row.findViewById(R.id.txtEmail);
+        TextView txtPhone =row.findViewById(R.id.txtPhone);
+        TextView txtCategory =row.findViewById(R.id.txtCategory);
+
+
+        txtSalonName.setText(originalArray.get(position).getCompanyName());
+        txtAddress.setText(originalArray.get(position).getAddress());
+        txtDistrict.setText(originalArray.get(position).getDistrict());
+        txtEmail.setText(originalArray.get(position).getEmail());
+        txtPhone.setText(originalArray.get(position).getPhone());
+        txtCategory.setText(originalArray.get(position).getCategory());
+
+
+
 
 //        Log.d("Data ",URL+originalArray.get(position).getImg());
 
@@ -117,7 +128,7 @@ public class AdminShowCompanyAdapter extends BaseAdapter implements Filterable {
 //        final Uri result = storageReference.child("images/05f1a198-6a05-441b-a4d9-9bbb4f53d037").getDownloadUrl().getResult();
 //        Log.d("Data","Image reference "+result);
 
-        productName.setText(originalArray.get(position).getCompanyName());
+
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -242,7 +242,7 @@
         email = eEmail.getText().toString();
         address = eAddress.getText().toString();
 
-        Company company = new Company(name,address,phone,email,d,c);
+        Company company = new Company(name,address,phone,email,d,c,"");
 
         UserType userType = new UserType(email,"SALON");
 

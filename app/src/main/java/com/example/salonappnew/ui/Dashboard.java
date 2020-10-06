@@ -335,7 +335,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 FirebaseAuth.getInstance().signOut();
                 activity.finishAffinity();
-                System.exit(0);
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {

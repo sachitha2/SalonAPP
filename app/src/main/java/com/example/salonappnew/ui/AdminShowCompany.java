@@ -70,7 +70,7 @@ public class AdminShowCompany extends AppCompatActivity {
     public static void logout(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");
-        builder.setMessage("Are you Sure youb want to logout?");
+        builder.setMessage("Are you Sure you want to logout?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

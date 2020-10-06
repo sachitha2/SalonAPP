@@ -72,7 +72,6 @@
          eName = findViewById(R.id.eTxtCName);
          ePhone = findViewById(R.id.eTxtPNumber);
          eEmail = findViewById(R.id.eTxtEmail);
-         eEmail.setEnabled(false);
          eAddress = findViewById(R.id.eTxtAddress);
 
          mFirebaseInstant = FirebaseDatabase.getInstance();

@@ -70,15 +70,7 @@ public class loginAdmin extends AppCompatActivity {
 
 
 
-        button = (Button) findViewById(R.id.btn_reg);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                //send to register as
-                openRegister();
-            }
-        });
 
         logBtn = (Button) findViewById(R.id.btn_login);
 

@@ -11,9 +11,9 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:text="LOGIN"
+        android:text="ADMIN LOGIN"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColorLink="#FFFFFF"
@@ -45,13 +45,7 @@
             android:background="@drawable/button_circle"
             android:text="LOGIN" />
 
-        <Button
-            android:id="@+id/btn_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button_circle"
-            android:text="Register" />
+
     </LinearLayout>
 
     <EditText

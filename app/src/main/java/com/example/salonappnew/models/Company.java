@@ -11,18 +11,20 @@ public class Company {
     String email;
     String district;
     String category;
+    String img;
 
     public Company(){
 
     }
 
-    public Company(String companyName, String address, String phone, String email,String district,String category) {
+    public Company(String companyName, String address, String phone, String email,String district,String category,String img) {
         this.companyName = companyName;
         this.address = address;
         this.phone = phone;
         this.email = email;
         this.district = district;
         this.category = category;
+        this.img = img;
     }
 
     public Company(SelectASalon selectASalon, ArrayList<Company> myList) {
@@ -60,5 +62,14 @@ public class Company {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

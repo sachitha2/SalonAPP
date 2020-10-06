@@ -151,7 +151,7 @@ public class loginAdmin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 //                            progressBar.setVisibility(View.GONE);
                             checkUserAvailability();
 
@@ -188,7 +188,7 @@ public class loginAdmin extends AppCompatActivity {
 //
                     Log.d("Data","User type found -> key "+dataSnapshot.getKey());
                     progressDialog.dismiss();
-                    kill_activity();
+
                     searchFireStore(mFirebaseAuth.getCurrentUser().getEmail());
                     Log.d("Data","Data  found");
 
@@ -238,7 +238,18 @@ public class loginAdmin extends AppCompatActivity {
                 UserType userType = dataSnapshot.getValue(UserType.class);
 
                 Log.d("Data","Data ->"+userType.getType());
-                openDashBoard(userType.getType());
+                String  usertT = userType.getType();
+                if(usertT.equals("ADMIN")){
+                    Toast.makeText(getApplicationContext(), "Opening Dashboard", Toast.LENGTH_LONG).show();
+
+                    openDashBoard(userType.getType());
+                    kill_activity();
+                }else{
+                    Toast.makeText(getApplicationContext(), "You are not an admin", Toast.LENGTH_LONG).show();
+
+
+                }
+
             }
 
             @Override

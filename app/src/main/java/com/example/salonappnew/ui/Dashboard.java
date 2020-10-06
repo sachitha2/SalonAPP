@@ -57,6 +57,7 @@ public class Dashboard extends AppCompatActivity {
 
     GridLayout customer;
     GridLayout salon;
+    GridLayout admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,7 @@ public class Dashboard extends AppCompatActivity {
 
         customer = findViewById(R.id.customer);
         salon = findViewById(R.id.salon);
+        admin = findViewById(R.id.admin);
 
         Intent intent = getIntent();
 
@@ -91,11 +93,18 @@ public class Dashboard extends AppCompatActivity {
 
         if(type.equals("SALON")){
             customer.setVisibility(View.GONE);
+            admin.setVisibility(View.GONE);
             salon.setVisibility(View.VISIBLE);
             txtType.setText("Salon");
+        }else if(type.equals("ADMIN")){
+            customer.setVisibility(View.GONE);
+            salon.setVisibility(View.GONE);
+            admin.setVisibility(View.VISIBLE);
+            txtType.setText("Admin");
         }else{
             customer.setVisibility(View.VISIBLE);
             salon.setVisibility(View.GONE);
+            admin.setVisibility(View.GONE);
             txtType.setText("Customer");
         }
 

@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ShowProductsInCustomer"></activity>
+        <activity android:name=".ui.AdminShowCompany"></activity>
+        <activity android:name=".ui.AdminShowCustomers" />
+        <activity android:name=".ui.ShowProductsInCustomer" />
         <activity android:name=".ui.CustomerProducts" />
         <activity android:name=".ui.EditAppointments" />
         <activity android:name=".ui.EditProduct" />
@@ -19,8 +21,6 @@
         <activity android:name=".ui.SelectDistrict" />
         <activity android:name=".ui.SelectASalon" />
         <activity android:name=".ui.Dashboard">
-
-
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -34,10 +34,7 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".drawer" >
-
-
-        </activity>
+        <activity android:name=".drawer" />
         <activity android:name=".salonHome" />
         <activity android:name=".serchprod" />
         <activity android:name=".serchnearsal" />

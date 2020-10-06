@@ -56,7 +56,6 @@ public class addcustomer extends AppCompatActivity {
 
 
 
-        eEmail.setEnabled(false);
         button = (Button) findViewById(R.id.btn_sub1);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +67,7 @@ public class addcustomer extends AppCompatActivity {
                     Toast.makeText(addcustomer.this,"data valid",Toast.LENGTH_LONG).show();
 
                       //add customer
-                        addData();
+                        addData("Image url here");
                 }
             }
         });
@@ -142,6 +141,9 @@ public class addcustomer extends AppCompatActivity {
        else if(!(gMale.isChecked() || gFmale.isChecked())){
             Toast.makeText(addcustomer.this,"Please Select a gender",Toast.LENGTH_LONG).show();
             return false;
+        }else if(imageUri == null){
+            Toast.makeText(addcustomer.this,"Please Select a Image",Toast.LENGTH_LONG).show();
+            return false;
         }
 
         else{
@@ -149,7 +151,7 @@ public class addcustomer extends AppCompatActivity {
         }
     }
 
-    public void addData(){
+    public void addData(String imageUrl){
         String name;
         String phone;
         String email;
@@ -170,12 +172,11 @@ public class addcustomer extends AppCompatActivity {
 
 
 
-        Customer customer = new Customer(name,phone,email,gen,"no");
+        Customer customer = new Customer(name,phone,email,gen,"NO",imageUrl);
         UserType userType = new UserType(email,"CUSTOMER");
 
         mFDb.child("customer").child(userId).setValue(customer);
         mFDb.child("userType").child(userId).setValue(userType);
-//        mFDb.child("E").setValue(customer);
         emptyInputs();
         openDashBoard();
 

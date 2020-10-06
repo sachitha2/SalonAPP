@@ -50,6 +50,11 @@ public class Dashboard extends AppCompatActivity {
     CardView slistProduct;
     CardView sProfile;
 
+    //admin card view
+    CardView adminCustomers;
+    CardView adminCompany;
+
+
 
 
 
@@ -78,6 +83,25 @@ public class Dashboard extends AppCompatActivity {
         saddProduct = findViewById(R.id.sAddProduct);
         slistProduct = findViewById(R.id.sListProducts);
         sProfile = findViewById(R.id.sProfile);
+
+        //admin part
+        adminCompany = findViewById(R.id.adminCompany);
+        adminCustomers = findViewById(R.id.adminCustomers);
+
+
+        adminCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO  admin company show part
+            }
+        });
+
+        adminCustomers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO admin customer show part
+            }
+        });
 
         txtType = findViewById(R.id.txtType);
 

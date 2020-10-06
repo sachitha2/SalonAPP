@@ -40,7 +40,6 @@ public class addcustomer extends AppCompatActivity {
         eName = findViewById(R.id.editTextTextPersonName);
         ePhone = findViewById(R.id.editTextTextPersonName4);
         eEmail = findViewById(R.id.eTxtEmail);
-        eEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
 
 
         gMale = findViewById(R.id.rMale);

@@ -27,8 +27,6 @@ import java.util.Map;
 
 public class registeras extends AppCompatActivity {
     private Button button, button1;
-    private DatabaseReference mFDb;
-    private FirebaseDatabase mFirebaseInstant;
 
 
     private  String userId;
@@ -61,11 +59,8 @@ public class registeras extends AppCompatActivity {
             }
         });
 
-        mFirebaseInstant = FirebaseDatabase.getInstance();
-        mFDb = mFirebaseInstant.getReference("users");
 
 
-        userId = mFDb.push().getKey();
 
     }
 
@@ -79,47 +74,7 @@ public class registeras extends AppCompatActivity {
         Intent intent = new Intent(this, addcompany.class);
         startActivity(intent);
     }
-    private void searchFireStore(){
-        String queryText = "ssdvfvfbvgvfgvgvtgvam@gmail.com";
-          Query data = mFDb.child("userType").orderByChild("email").startAt(queryText)
-                  .endAt(queryText+"\uf8ff");
 
-
-
-          data.addChildEventListener(new ChildEventListener() {
-              @Override
-              public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                  System.out.println(dataSnapshot.getKey());
-
-                  Log.d("Data","Data ->"+dataSnapshot.getKey());
-                  Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
-
-                  UserType userType = dataSnapshot.getValue(UserType.class);
-
-                  Log.d("Data","Data ->"+userType.getType());
-              }
-
-              @Override
-              public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-              }
-
-              @Override
-              public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-              }
-
-              @Override
-              public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-              }
-
-              @Override
-              public void onCancelled(@NonNull DatabaseError databaseError) {
-
-              }
-          });
-         }
 
 
 

@@ -3,6 +3,7 @@ package com.example.salonappnew;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,19 +21,33 @@ import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
 
 public class addcustomer extends AppCompatActivity {
+
+    //Firebase storage
+    FirebaseAuth mFirebaseAuth;
+    FirebaseStorage storage;
+    StorageReference storageReference;
     private DatabaseReference mFDb;
     private FirebaseDatabase mFirebaseInstant;
+
+
     private Button button;
     private  String userId;
     EditText eEmail,eName,ePhone,password,passConfirm;
-    FirebaseAuth mFirebaseAuth;
     boolean gender;
     RadioButton gMale;
     RadioButton gFmale;
@@ -97,6 +112,11 @@ public class addcustomer extends AppCompatActivity {
                 openGallery();
             }
         });
+
+
+        //firebase storage
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
     }
 
@@ -221,11 +241,47 @@ public class addcustomer extends AppCompatActivity {
                             }else{
 
                                 Toast.makeText(addcustomer.this,"Sign up ok",Toast.LENGTH_LONG).show();
-                                //TODO
+                                uploadImage();
                             }
                         }
                     });
                 }
+    private void uploadImage() {
 
+        if(imageUri != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+            final String imgId = "images/"+ UUID.randomUUID().toString();
+            StorageReference ref = storageReference.child(imgId);
+            //TODO save image reference
+
+            ref.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            addData(imgId);
+                            progressDialog.dismiss();
+                            Toast.makeText(addcustomer.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(addcustomer.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
 }
 

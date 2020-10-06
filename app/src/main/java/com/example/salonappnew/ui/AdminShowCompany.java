@@ -57,10 +57,10 @@ public class AdminShowCompany extends AppCompatActivity {
     }
 
     public void ClickHome(View view) {
-        recreate();
+        redirectActivity(this, Dashboard.class);
     }
     public void ClickDashboard(View view){
-        recreate();
+        redirectActivity(this, Dashboard.class);
 
     }
     public void ClickAboutUs(View view){

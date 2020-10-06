@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,12 +34,23 @@ public class loginAdmin extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     private DatabaseReference mFDb;
     private FirebaseDatabase mFirebaseInstant;
+
+    TextView adminLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_admin);
         emailId = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPass);
+
+        adminLogin = findViewById(R.id.txtLogin);
+
+        adminLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLogin();
+            }
+        });
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -249,5 +261,10 @@ public class loginAdmin extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openLogin(){
+        Intent intent = new Intent(this, login.class);
+        startActivity(intent);
     }
 }

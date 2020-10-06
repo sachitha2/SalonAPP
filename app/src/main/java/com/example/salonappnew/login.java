@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.models.UserType;
@@ -34,12 +35,22 @@ public class login extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     private DatabaseReference mFDb;
     private FirebaseDatabase mFirebaseInstant;
+    TextView adminLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         emailId = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPass);
+
+        adminLogin = findViewById(R.id.txtAdminLogin);
+
+        adminLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdminLogin();
+            }
+        });
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -127,6 +138,11 @@ public class login extends AppCompatActivity {
         startActivity(intent);
 
 
+    }
+
+    public void openAdminLogin(){
+        Intent intent = new Intent(this, loginAdmin.class);
+        startActivity(intent);
     }
 
 

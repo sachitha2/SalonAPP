@@ -51,6 +51,7 @@
         <activity android:name=".news" />
         <activity android:name=".newlogin" />
         <activity android:name=".manageproduct" />
+        <activity android:name=".loginAdmin" />
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

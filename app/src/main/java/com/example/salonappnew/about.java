@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.salonappnew.common.Common;
 import com.example.salonappnew.ui.Dashboard;
 
 public class about extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class about extends AppCompatActivity {
 
     }
     public void ClickLogout(View view){
-        drawer.logout(this);
+        Common.logout(this);
     }
     @Override
     protected void onPause(){

@@ -130,7 +130,7 @@ public class editcustomer extends AppCompatActivity {
                 Log.d("Data","Customer "+customer.getName());
 
                 name.setText(customer.getName());
-                address.setText(customer.getName());
+                address.setText(customer.getGender());
                 phone.setText(customer.getPhone());
 
 

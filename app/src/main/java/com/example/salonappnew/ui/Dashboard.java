@@ -2,6 +2,7 @@ package com.example.salonappnew.ui;
 
 
 import com.example.salonappnew.about;
+import com.example.salonappnew.common.Common;
 import com.example.salonappnew.editcustomer;
 import com.example.salonappnew.editsalondetails;
 import com.example.salonappnew.addproduct;
@@ -23,14 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
-import com.example.salonappnew.addapoint;
-import com.example.salonappnew.home;
 import com.example.salonappnew.login;
-import com.example.salonappnew.news;
-import com.example.salonappnew.notification;
-import com.example.salonappnew.offers;
-import com.example.salonappnew.profile;
-import com.example.salonappnew.serchprod;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
@@ -225,55 +219,7 @@ public class Dashboard extends AppCompatActivity {
                 Toast.makeText(Dashboard.this, "Add Products", Toast.LENGTH_SHORT).show();
             }
         });
-//        notification.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.notification.class);
-//                startActivity(intent);
-//
-//                Toast.makeText(Dashboard.this, "Go to Notifications", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
-//        offers.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.offers.class);
-//                startActivity(intent);
-//
-//                Toast.makeText(Dashboard.this, "Go to Offers", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        newsFeed.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Dashboard.this, news.class);
-//                startActivity(intent);
-//
-//                Toast.makeText(Dashboard.this, "Go to News feed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        products.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Dashboard.this, serchprod.class);
-//                startActivity(intent);
-//
-//                Toast.makeText(Dashboard.this, "Go to Products", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Dashboard.this, com.example.salonappnew.profile.class);
-//                startActivity(intent);
-//
-//                Toast.makeText(Dashboard.this, "Go to Profile", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
     }
 
@@ -281,6 +227,7 @@ public class Dashboard extends AppCompatActivity {
         Intent intent = new Intent(Dashboard.this, login.class);
         startActivity(intent);
         kill_activity();
+
     }
 
     public void kill_activity()
@@ -310,9 +257,8 @@ public class Dashboard extends AppCompatActivity {
         }
     }
     public void ClickLogout(View view){
-        Log.d("Data","Log out clicked");
-
-        logout(this);
+       Log.d("Data","Log out clicked");
+       Common.logout(this);
     }
 
     public void ClickHome(View view) {
@@ -323,40 +269,21 @@ public class Dashboard extends AppCompatActivity {
 
     }
     public void ClickAboutUs(View view){
-        redirectActivity(this, about.class);
+        Common.redirectActivity(this, about.class);
     }
 
-    public static void logout(final Activity activity){
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you Sure youb want to logout?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                FirebaseAuth.getInstance().signOut();
-                activity.finishAffinity();
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
-        Intent intent = new Intent(activity,aClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        activity.startActivity(intent);
-    }
+
+
 
     @Override
     protected void onPause() {
         super.onPause();
         closeDrawer(drawerLayout);
     }
+
+
+
 
     //nav end
 }

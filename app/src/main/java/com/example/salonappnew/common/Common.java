@@ -17,7 +17,7 @@ public class Common {
         activity.startActivity(intent);
     }
 
-
+    //This is Common Logout for all drawers
     public static void logout(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");

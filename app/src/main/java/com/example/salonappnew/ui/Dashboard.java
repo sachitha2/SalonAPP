@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,8 +31,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Dashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
+
+    static ImageView imgPropic;
     TextView txtType;
-    String type;
+    static String type;
       //Customer card view
     CardView cAddAppoint;
     CardView cMyAppoint;
@@ -81,6 +84,9 @@ public class Dashboard extends AppCompatActivity {
         //admin part
         adminCompany = findViewById(R.id.adminCompany);
         adminCustomers = findViewById(R.id.adminCustomers);
+
+
+        imgPropic = findViewById(R.id.imgProfile);
 
 
         adminCompany.setOnClickListener(new View.OnClickListener() {
@@ -244,7 +250,7 @@ public class Dashboard extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        Common.findProfileImg(imgPropic,type);
     }
 
     public void ClickLogo(View view){

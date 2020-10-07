@@ -32,7 +32,11 @@ public class Dashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
 
+    //Find profile data start
     static ImageView imgPropic;
+    static TextView txtProfileName;
+    //Find profile data end
+
     TextView txtType;
     static String type;
       //Customer card view
@@ -86,7 +90,10 @@ public class Dashboard extends AppCompatActivity {
         adminCustomers = findViewById(R.id.adminCustomers);
 
 
+        //Find profile data start
         imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+        //Find profile data end
 
 
         adminCompany.setOnClickListener(new View.OnClickListener() {
@@ -250,7 +257,10 @@ public class Dashboard extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-        Common.findProfileImg(imgPropic,type);
+
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){

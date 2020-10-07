@@ -2,15 +2,21 @@ package com.example.salonappnew.common;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.salonappnew.R;
+import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.Customer;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,7 +51,7 @@ public class Common {
     public static void logout(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");
-        builder.setMessage("Are you Sure youb want to logout?");
+        builder.setMessage("Are you Sure you want to logout?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -63,19 +69,22 @@ public class Common {
     }
 
 
-    public static void findProfileImg(ImageView imgView,String type){
+    public static void findProfileImg(ImageView imgView,String type,TextView txtProfileName){
         //Load image data from firebase
 
 
 
         Log.d("Data","Type"+type);
 
-        searchFireStore(type,imgView);
+        searchFireStore(type,imgView,txtProfileName);
     }
 
 
 
-    private static void searchFireStore(String type, final ImageView imgView){
+    private static void searchFireStore(final String type, final ImageView imgView, final TextView txtProfileName){
+
+
+        final String[] tmpUrl = new String[1];
 
         final String[] img = new String[1];
 
@@ -95,6 +104,10 @@ public class Common {
                 .endAt(mFirebaseAuth.getCurrentUser().getEmail()+"\uf8ff");
 
 
+        if (type.equals("ADMIN")){
+            txtProfileName.setText("ADMIN");
+        }
+
 
         data.addChildEventListener(new ChildEventListener() {
             @Override
@@ -105,13 +118,28 @@ public class Common {
                 key = dataSnapshot.getKey();
                 Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
 
-                Customer customer = dataSnapshot.getValue(Customer.class);
-
-                Log.d("Data","Customer "+customer.getName());
 
 
-                    if(customer.getImgUrl() != null){
-                        storageReference.child(customer.getImgUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                if(type.equals("CUSTOMER")){
+                    Customer customer = dataSnapshot.getValue(Customer.class);
+                    txtProfileName.setText(customer.getName());
+
+                    Log.d("Data","Customer "+customer.getName());
+                    tmpUrl[0] = customer.getImgUrl();
+
+                }else if(type.equals("SALON")){
+                    Company company = dataSnapshot.getValue(Company.class);
+                    txtProfileName.setText(company.getCompanyName());
+
+                    Log.d("Data","SALON "+company.getCompanyName());
+                    tmpUrl[0] = company.getImg();
+                }else{
+                    tmpUrl[0] = null;
+
+                }
+
+                    if(tmpUrl[0] != null){
+                        storageReference.child(tmpUrl[0]).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
                                 // Got the download URL for 'users/me/profile.png'

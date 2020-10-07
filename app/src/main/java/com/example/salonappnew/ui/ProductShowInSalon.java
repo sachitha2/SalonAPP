@@ -14,7 +14,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.about;
@@ -32,6 +34,12 @@ import java.util.ArrayList;
 
 public class ProductShowInSalon extends AppCompatActivity  implements TextWatcher {
 
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
+
     DrawerLayout drawerLayout;
     ArrayList<Product> myList;
     ProductListAdapter myAdapter;
@@ -43,6 +51,16 @@ public class ProductShowInSalon extends AppCompatActivity  implements TextWatche
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_show_in_salon);
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+
+        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+        //Find profile data end
 
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -109,9 +127,11 @@ public class ProductShowInSalon extends AppCompatActivity  implements TextWatche
         openDrawer(drawerLayout);
     }
 
-    public static void openDrawer(DrawerLayout drawerLayout){
+    public void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){
@@ -128,11 +148,8 @@ public class ProductShowInSalon extends AppCompatActivity  implements TextWatche
         Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        redirectActivity(this, Dashboard.class);
-    }
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+      Common.dashboardOpen(this, Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){
@@ -152,6 +169,5 @@ public class ProductShowInSalon extends AppCompatActivity  implements TextWatche
         super.onPause();
         closeDrawer(drawerLayout);
     }
-
     //nav end
 }

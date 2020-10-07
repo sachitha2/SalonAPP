@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -39,6 +40,13 @@ import java.util.Date;
 import java.util.Objects;
 
 public class EditAppointments extends AppCompatActivity {
+
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
 
 
     DrawerLayout drawerLayout;
@@ -67,12 +75,22 @@ public class EditAppointments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_appointments);
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+        Log.d("Data",   "Intent select a salon "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        //Find profile data end
+
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
         //nav end
 
         //set salon in text view
-        Intent intent = getIntent();
         salonEmail = intent.getStringExtra("salonEmail");
 
 
@@ -227,7 +245,9 @@ public class EditAppointments extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){

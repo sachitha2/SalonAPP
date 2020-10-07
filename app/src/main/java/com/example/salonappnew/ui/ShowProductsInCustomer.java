@@ -14,7 +14,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.about;
@@ -31,6 +33,12 @@ import java.util.ArrayList;
 
 public class ShowProductsInCustomer extends AppCompatActivity  implements TextWatcher {
 
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
+
     DrawerLayout drawerLayout;
     ArrayList<Product> myList;
     CustomerProductListAdapter myAdapter;
@@ -43,6 +51,16 @@ public class ShowProductsInCustomer extends AppCompatActivity  implements TextWa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_products_in_customer);
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+
+        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+        //Find profile data end
 
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -112,6 +130,9 @@ public class ShowProductsInCustomer extends AppCompatActivity  implements TextWa
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
 
     }
 
@@ -129,12 +150,9 @@ public class ShowProductsInCustomer extends AppCompatActivity  implements TextWa
         Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        redirectActivity(this, Dashboard.class);
-    }
-    public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
 
+    public void ClickDashboard(View view){
+        Common.dashboardOpen(this,Dashboard.class,type);
     }
     public void ClickAboutUs(View view){
         redirectActivity(this, about.class);

@@ -35,10 +35,11 @@ public class Dashboard extends AppCompatActivity {
     //Find profile data start
     static ImageView imgPropic;
     static TextView txtProfileName;
+    static String type;
     //Find profile data end
 
     TextView txtType;
-    static String type;
+
       //Customer card view
     CardView cAddAppoint;
     CardView cMyAppoint;
@@ -70,10 +71,15 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
         Intent intent = getIntent();
 
         Log.d("Data",   "Intent "+intent.getStringExtra("type"));
         type = intent.getStringExtra("type");
+        //Find profile data end
 
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -95,10 +101,7 @@ public class Dashboard extends AppCompatActivity {
         adminCustomers = findViewById(R.id.adminCustomers);
 
 
-        //Find profile data start
-        imgPropic = findViewById(R.id.imgProfile);
-        txtProfileName = findViewById(R.id.txtProfileName);
-        //Find profile data end
+
 
 
         adminCompany.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +160,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, ShowProductsInCustomer.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
@@ -167,6 +171,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, SalonAppoinmentShow.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Appoinments", Toast.LENGTH_SHORT).show();
@@ -177,6 +182,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, ProductShowInSalon.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
@@ -188,6 +194,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, SelectDistrict.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Go to Appointment", Toast.LENGTH_SHORT).show();
@@ -199,6 +206,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, CustomerAppoinments.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "My Appointment", Toast.LENGTH_SHORT).show();
@@ -209,6 +217,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, editcustomer.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "My Profile", Toast.LENGTH_SHORT).show();
@@ -220,6 +229,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, editsalondetails.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "My Profile", Toast.LENGTH_SHORT).show();
@@ -231,6 +241,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, addproduct.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Add Products", Toast.LENGTH_SHORT).show();

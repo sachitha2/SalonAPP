@@ -57,6 +57,7 @@ public class DistrictListAdapter extends BaseAdapter implements Filterable {
 
                 Intent intent = new Intent(c, SelectASalon.class);
                 intent.putExtra("district", originalArray.get(position).getName());
+                intent.putExtra("type", "CUSTOMER");
                 c.startActivity(intent);
                 Toast.makeText(c, originalArray.get(position).getName() + " was clicked", Toast.LENGTH_SHORT).show();
                 ((Activity) c).finish();

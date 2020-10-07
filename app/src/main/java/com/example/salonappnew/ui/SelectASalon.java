@@ -14,8 +14,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.about;
@@ -33,6 +35,13 @@ import java.util.ArrayList;
 
 public class SelectASalon extends AppCompatActivity implements TextWatcher {
 
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
+
     DrawerLayout drawerLayout;
     ArrayList<Company> myList;
     CustomerListAdapter myAdapter;
@@ -46,6 +55,16 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_a_salon);
 
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+        Log.d("Data",   "Intent select a salon "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        //Find profile data end
+
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
         //nav end
@@ -54,8 +73,6 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
 
         customerList = findViewById(R.id.listCustomers);
 
-        //get intent
-        Intent intent = getIntent();
 
         district = intent.getStringExtra("district");
 
@@ -124,9 +141,11 @@ public class SelectASalon extends AppCompatActivity implements TextWatcher {
         openDrawer(drawerLayout);
     }
 
-    public static void openDrawer(DrawerLayout drawerLayout){
+    public  void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){

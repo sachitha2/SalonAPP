@@ -271,7 +271,7 @@ public class EditProduct extends AppCompatActivity {
     }
 
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+        Common.dashboardOpen(this,Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){

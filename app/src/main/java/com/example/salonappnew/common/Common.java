@@ -47,6 +47,14 @@ public class Common {
         activity.startActivity(intent);
     }
 
+    public static void dashboardOpen(Activity activity, Class aClass,String type){
+
+        Intent intent = new Intent(activity,aClass);
+        intent.putExtra("type",type);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+
     //This is Common Logout for all drawers
     public static void logout(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);

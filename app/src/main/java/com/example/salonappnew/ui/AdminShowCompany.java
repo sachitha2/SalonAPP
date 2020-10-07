@@ -14,7 +14,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.salonappnew.R;
 import com.example.salonappnew.about;
@@ -31,6 +33,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class AdminShowCompany extends AppCompatActivity  implements TextWatcher {
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
     DrawerLayout drawerLayout;
 
     ArrayList<Company> myList;
@@ -39,6 +47,8 @@ public class AdminShowCompany extends AppCompatActivity  implements TextWatcher 
     ListView customerList;
 
     DatabaseReference databaseReference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,11 @@ public class AdminShowCompany extends AppCompatActivity  implements TextWatcher 
         //nav end
 
 
+        Intent intent = getIntent();
+
+        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
 
         searchCustomers = findViewById(R.id.txtsearchCustomers);
 
@@ -59,6 +74,11 @@ public class AdminShowCompany extends AppCompatActivity  implements TextWatcher 
         databaseReference = FirebaseDatabase.getInstance().getReference("users/salon");
 
         searchCustomers.addTextChangedListener(this);
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+        //Find profile data end
 
     }
 
@@ -71,7 +91,9 @@ public class AdminShowCompany extends AppCompatActivity  implements TextWatcher 
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){
@@ -92,7 +114,7 @@ public class AdminShowCompany extends AppCompatActivity  implements TextWatcher 
         redirectActivity(this, Dashboard.class);
     }
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+        Common.dashboardOpen(this,Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){

@@ -70,6 +70,11 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
+        Intent intent = getIntent();
+
+        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
         //nav end
@@ -100,6 +105,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, AdminShowCompany.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
@@ -110,6 +116,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, AdminShowCustomers.class);
+                intent.putExtra("type", type);
                 startActivity(intent);
 
                 Toast.makeText(Dashboard.this, "Show Products", Toast.LENGTH_SHORT).show();
@@ -123,10 +130,7 @@ public class Dashboard extends AppCompatActivity {
         salon = findViewById(R.id.salon);
         admin = findViewById(R.id.admin);
 
-        Intent intent = getIntent();
 
-        Log.d("Data",   "Intent "+intent.getStringExtra("type"));
-        type = intent.getStringExtra("type");
 
         if(type.equals("SALON")){
             customer.setVisibility(View.GONE);
@@ -277,9 +281,6 @@ public class Dashboard extends AppCompatActivity {
        Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        recreate();
-    }
     public void ClickDashboard(View view){
         recreate();
 

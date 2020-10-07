@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.common.Common;
@@ -30,6 +32,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class editsalondetails extends AppCompatActivity {
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
 
     DrawerLayout drawerLayout;
     FirebaseAuth mFirebaseAuth;
@@ -47,6 +55,17 @@ public class editsalondetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editsalondetails);
+
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+        Log.d("Data",   "Intent select a salon "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        //Find profile data end
 
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -157,7 +176,9 @@ public class editsalondetails extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){
@@ -174,11 +195,8 @@ public class editsalondetails extends AppCompatActivity {
         Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        redirectActivity(this, Dashboard.class);
-    }
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+        Common.dashboardOpen(this,Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){

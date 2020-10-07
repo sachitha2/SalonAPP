@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.DirectAction;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -264,11 +265,8 @@ public class EditAppointments extends AppCompatActivity {
         Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        redirectActivity(this, Dashboard.class);
-    }
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+        Common.dashboardOpen(this, Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){

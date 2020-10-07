@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.common.Common;
@@ -43,6 +44,12 @@ import com.google.firebase.storage.UploadTask;
 import java.util.UUID;
 
 public class addproduct extends AppCompatActivity {
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
 
     DrawerLayout drawerLayout;
 
@@ -67,6 +74,17 @@ public class addproduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproduct);
+
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+        Log.d("Data",   "Intent select a salon "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        //Find profile data end
 
 
         //nav start
@@ -218,7 +236,9 @@ public class addproduct extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){
@@ -239,7 +259,7 @@ public class addproduct extends AppCompatActivity {
         redirectActivity(this, Dashboard.class);
     }
     public void ClickDashboard(View view){
-        redirectActivity(this, Dashboard.class);
+        Common.dashboardOpen(this, Dashboard.class,type);
 
     }
     public void ClickAboutUs(View view){

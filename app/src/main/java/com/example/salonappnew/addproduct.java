@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.salonappnew.common.Common;
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.models.Product;
 import com.example.salonappnew.models.UserType;
@@ -231,8 +232,7 @@ public class addproduct extends AppCompatActivity {
     }
     public void ClickLogout(View view){
         Log.d("Data","Log out clicked");
-
-        logout(this);
+        Common.logout(this);
     }
 
     public void ClickHome(View view) {
@@ -246,26 +246,7 @@ public class addproduct extends AppCompatActivity {
         redirectActivity(this, about.class);
     }
 
-    public static void logout(final Activity activity){
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you Sure youb want to logout?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                FirebaseAuth.getInstance().signOut();
-                activity.finishAffinity();
-                System.exit(0);
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
+
 
     public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity,aClass);

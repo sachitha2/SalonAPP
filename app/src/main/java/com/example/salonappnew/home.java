@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.salonappnew.common.Common;
+
 
 public class home extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -83,7 +85,7 @@ public class home extends AppCompatActivity {
         drawer.redirectActivity(this,about.class);
     }
     public void ClickLogout(View view){
-        drawer.logout(this);
+        Common.logout(this);;
     }
     @Override
     protected void onPause(){

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
+import com.example.salonappnew.common.Common;
+
 public class drawer extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
@@ -53,27 +55,9 @@ public class drawer extends AppCompatActivity {
         redirectActivity(this, about.class);
     }
     public void logout(View view){
-        logout(this);
+        Common.logout(this);
     }
-    public static void logout(final Activity activity){
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you Sure youb want to logout?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                activity.finishAffinity();
-                System.exit(0);
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
+
 
     public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity,aClass);

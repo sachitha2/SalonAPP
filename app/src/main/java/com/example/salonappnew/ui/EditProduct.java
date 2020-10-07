@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salonappnew.R;
@@ -42,6 +43,12 @@ import com.squareup.picasso.Picasso;
 import java.util.UUID;
 
 public class EditProduct extends AppCompatActivity {
+
+    //Find profile data start
+    static ImageView imgPropic;
+    static TextView txtProfileName;
+    static String type;
+    //Find profile data end
 
     DrawerLayout drawerLayout;
 
@@ -68,6 +75,16 @@ public class EditProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
 
+
+        //Find profile data start
+        imgPropic = findViewById(R.id.imgProfile);
+        txtProfileName = findViewById(R.id.txtProfileName);
+
+        Intent intent = getIntent();
+        Log.d("Data",   "Intent select a salon "+intent.getStringExtra("type"));
+        type = intent.getStringExtra("type");
+
+        //Find profile data end
         //nav start
         drawerLayout = findViewById(R.id.drawer_layout);
         //nav end
@@ -85,7 +102,6 @@ public class EditProduct extends AppCompatActivity {
 
 
         //take data to here
-        Intent intent = getIntent();
 
         Log.d("Data",   "Intent ");
 
@@ -235,7 +251,9 @@ public class EditProduct extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
-
+        //Find profile data start
+        Common.findProfileImg(imgPropic,type,txtProfileName);
+        //Find profile data end
     }
 
     public void ClickLogo(View view){
@@ -252,9 +270,6 @@ public class EditProduct extends AppCompatActivity {
         Common.logout(this);
     }
 
-    public void ClickHome(View view) {
-        redirectActivity(this, Dashboard.class);
-    }
     public void ClickDashboard(View view){
         redirectActivity(this, Dashboard.class);
 

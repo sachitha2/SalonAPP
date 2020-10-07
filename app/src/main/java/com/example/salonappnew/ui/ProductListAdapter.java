@@ -112,6 +112,7 @@ public class ProductListAdapter extends BaseAdapter implements Filterable {
                 intent.putExtra("description", originalArray.get(position).getDescription());
                 intent.putExtra("img", img);
                 intent.putExtra("key", originalArray.get(position).getId());
+                intent.putExtra("type", "SALON");
                 c.startActivity(intent);
                 Toast.makeText(c, originalArray.get(position).getpName() + " edit was clicked", Toast.LENGTH_SHORT).show();
                 ((Activity) c).finish();

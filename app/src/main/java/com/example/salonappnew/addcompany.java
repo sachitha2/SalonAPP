@@ -207,7 +207,6 @@
              final String imgId = "images/"+ UUID.randomUUID().toString();
 
              StorageReference ref = storageReference.child(imgId);
-             //TODO save image reference
 
              ref.putFile(imageUri)
                      .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

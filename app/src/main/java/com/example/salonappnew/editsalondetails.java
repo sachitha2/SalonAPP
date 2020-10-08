@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,10 +27,16 @@ import android.widget.Toast;
 import com.example.salonappnew.common.Common;
 import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.Customer;
+import com.example.salonappnew.models.UserType;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,15 +44,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class editsalondetails extends AppCompatActivity {
 
 
+    EditText txtPassConfirm;
+    EditText txtPass;
+    EditText txtPassOld;
     ArrayAdapter<CharSequence> dAdapter;
     List<CharSequence> daList;
     ArrayAdapter<CharSequence> featuresAdapter;
@@ -71,14 +84,25 @@ public class editsalondetails extends AppCompatActivity {
     Button edit,del,changeImage;
 
     String key;
+    String userId;
 
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
+
+    String sPass;
+    String sPassC;
+    String sPassOld;
+
+    String imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editsalondetails);
+
+        txtPass = findViewById(R.id.txtPass);
+        txtPassConfirm = findViewById(R.id.txtPassConfirm);
+        txtPassOld = findViewById(R.id.txtPassOld);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -115,9 +139,29 @@ public class editsalondetails extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Company company = new Company(name.getText().toString(),address.getText().toString(),phone.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail(),"","","");
-                mFDb.child("salon").child(key).setValue(company);
-                Toast.makeText(getApplicationContext(), "Profile updated", Toast.LENGTH_LONG).show();
+
+                sPass = txtPass.getText().toString();
+                sPassC = txtPassConfirm.getText().toString();
+                sPassOld = txtPassOld.getText().toString();
+
+                //check password status
+                if(sPass.isEmpty() && sPassC.isEmpty() && sPassOld.isEmpty()){
+                    //change data with out changing password
+                    Log.d("Data","All password fields are empty");
+                    uploadImage();
+                }else{
+                    //now check password status
+                    Log.d("Data","password checking");
+                    if(passChack()){
+                        //pass check done
+                        Log.d("Data","Password ok");
+                        //code here
+                        changePassword();
+                    }
+                }
+//                Company company = new Company(name.getText().toString(),address.getText().toString(),phone.getText().toString(),mFirebaseAuth.getCurrentUser().getEmail(),"","","");
+//                mFDb.child("salon").child(key).setValue(company);
+//                Toast.makeText(getApplicationContext(), "Profile updated", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -233,6 +277,7 @@ public class editsalondetails extends AppCompatActivity {
                 System.out.println(dataSnapshot.getKey());
 
                 Log.d("Data","Data ->"+dataSnapshot.getKey());
+                userId  = dataSnapshot.getKey();
                 key = dataSnapshot.getKey();
                 Log.d("Data","Data ->"+dataSnapshot.getValue().toString());
 
@@ -242,6 +287,7 @@ public class editsalondetails extends AppCompatActivity {
                 name.setText(company.getCompanyName());
                 address.setText(company.getAddress());
                 phone.setText(company.getPhone());
+                imageUrl = company.getImg();
 
 
                 featuresSelection.setSelection(featuresAdapter.getPosition(company.getCategory()));
@@ -267,7 +313,6 @@ public class editsalondetails extends AppCompatActivity {
                 }
 
 
-                //TODO interface ui error ->not mine
 
             }
 
@@ -353,4 +398,133 @@ public class editsalondetails extends AppCompatActivity {
     }
 
     //nav end
+
+    private void uploadImage() {
+
+        Log.d("Data","image uri"+imageUri);
+        if(imageUri != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+            final String imgId = "images/"+ UUID.randomUUID().toString();
+            StorageReference ref = storageReference.child(imgId);
+            Log.d("Data","uri"+imageUri.toString());
+            ref.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            addData(imgId);
+                            progressDialog.dismiss();
+                            Toast.makeText(editsalondetails.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(editsalondetails.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }else{
+            addData(imageUrl);
+        }
+    }
+
+
+    public boolean passChack(){
+        String sPold;
+        String sPnew;
+        String sPnewConfirm;
+
+        sPold = txtPassOld.getText().toString();
+        sPnew = txtPass.getText().toString();
+        sPnewConfirm = txtPassConfirm.getText().toString();
+
+        if(sPold.isEmpty()){
+            txtPassOld.setError("Please provide your Old Password");
+            txtPassOld.requestFocus();
+            return false;
+        }else if(sPnew.isEmpty()){
+            txtPass.setError("Please provide your New Password");
+            txtPass.requestFocus();
+            return false;
+        }else if(sPnewConfirm.isEmpty()){
+            txtPassConfirm.setError("Please confirm your New Password");
+            txtPassConfirm.requestFocus();
+            return false;
+        }
+        else if(sPnew.length() < 6 && sPnewConfirm.length() < 6){
+            Toast.makeText(editsalondetails.this,"Min password length is 6 characters",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else if(!sPnew.equals(sPnewConfirm)){
+            Toast.makeText(editsalondetails.this,"Please Enter same password in both fields",Toast.LENGTH_LONG).show();
+            return false;
+        }else{
+            return  true;
+        }
+
+    }
+
+
+    public  void changePassword(){
+        String email = mFirebaseAuth.getCurrentUser().getEmail();
+        final String pass = txtPass.getText().toString();
+        final String passOld = txtPassOld.getText().toString();
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(email, passOld);
+
+// Prompt the user to re-provide their sign-in credentials
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            user.updatePassword(pass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("Data", "Password updated");
+                                        Toast.makeText(editsalondetails.this,"Password updated",Toast.LENGTH_LONG).show();
+                                        uploadImage();
+                                    } else {
+                                        Toast.makeText(editsalondetails.this,"Error password not updated",Toast.LENGTH_LONG).show();
+                                        Log.d("Data", "Error password not updated");
+                                    }
+                                }
+                            });
+                        } else {
+                            Toast.makeText(editsalondetails.this,"Error auth failed",Toast.LENGTH_LONG).show();
+                            Log.d("Data", "Error auth failed");
+                        }
+                    }
+                });
+    }
+    public void addData(String imgId){
+        String sname;
+        String sphone;
+        String saddress;
+        String d = dist.getSelectedItem().toString();
+        String c = featuresSelection.getSelectedItem().toString();;
+
+        sname = name.getText().toString();
+        sphone = phone.getText().toString();
+        saddress = address.getText().toString();
+
+        Company company = new Company(sname,saddress,sphone,mFirebaseAuth.getCurrentUser().getEmail(),d,c,imgId);
+
+        mFDb.child("salon").child(userId).setValue(company);
+    }
+
 }

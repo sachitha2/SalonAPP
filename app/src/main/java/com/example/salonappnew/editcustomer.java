@@ -269,7 +269,6 @@ public class editcustomer extends AppCompatActivity {
 
 
 
-                //TODO interface ui error ->not mine
 
             }
 

@@ -17,48 +17,41 @@
             layout="@layout/main_toolbar"/>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="409dp"
-                android:layout_height="37dp"
-                android:text="Edit Salon Details"
-                android:textAlignment="center"
-                android:textColor="#090909"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.151" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="162dp"
-                android:layout_height="155dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.276"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <LinearLayout
-                android:layout_width="379dp"
-                android:layout_height="197dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.623">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="409dp"
+                    android:layout_height="37dp"
+                    android:text="Edit Salon Details"
+                    android:textAlignment="center"
+                    android:textColor="#090909"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="Change Image" />
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="162dp"
+                        android:layout_height="155dp"
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/txtSalonName"
@@ -84,32 +77,28 @@
                     android:ems="10"
                     android:hint="Phone Number"
                     android:inputType="textPersonName" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btnEdit"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EDIT"/>
+
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DELETE" />
+                </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EDIT"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.275"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.808" />
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DELETE"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.736"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.808" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
     </LinearLayout>

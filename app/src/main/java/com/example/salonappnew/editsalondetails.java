@@ -15,9 +15,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,8 +40,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class editsalondetails extends AppCompatActivity {
 
+
+    ArrayAdapter<CharSequence> dAdapter;
+    List<CharSequence> daList;
+    ArrayAdapter<CharSequence> featuresAdapter;
+    List<CharSequence> featuresList;
+    Spinner featuresSelection;
+    Spinner dist;
     //Find profile data start
     static ImageView imgPropic,imgPropicEdit;
     static TextView txtProfileName;
@@ -130,6 +142,67 @@ public class editsalondetails extends AppCompatActivity {
             }
         });
         searchFireStore();
+
+
+
+        featuresSelection = findViewById(R.id.Category);
+
+
+        featuresList = new ArrayList<CharSequence>();
+        featuresAdapter = new ArrayAdapter<CharSequence>(this,
+                android.R.layout.simple_spinner_item, featuresList);
+        featuresAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+        featuresSelection = ((Spinner) editsalondetails.this
+                .findViewById(R.id.Category));
+        featuresSelection.setAdapter(featuresAdapter);
+
+
+        featuresAdapter.add("Hair and beauty");
+        featuresAdapter.add("Eye care,lip and neck");
+        featuresAdapter.add("Bridal dressing");
+        featuresAdapter.add("Pedicure");
+
+
+        dist = findViewById(R.id.spinnerDistrict);
+
+
+        daList = new ArrayList<CharSequence>();
+        dAdapter = new ArrayAdapter<CharSequence>(this,
+                android.R.layout.simple_spinner_item, daList);
+        dAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+        dist = ((Spinner) editsalondetails.this
+                .findViewById(R.id.spinnerDistrict));
+        dist.setAdapter(dAdapter);
+
+
+
+        dAdapter.add("Jaffna");
+        dAdapter.add("Kilinochchi");
+        dAdapter.add("Mannar");
+        dAdapter.add("Mullaitivu");
+        dAdapter.add("Vavuniya");
+        dAdapter.add("Puttalam");
+        dAdapter.add("Kurunegala");
+        dAdapter.add("Gampaha");
+        dAdapter.add("Colombo");
+        dAdapter.add("Kalutara");
+        dAdapter.add("Anuradhapura");
+        dAdapter.add("Polonnaruwa");
+        dAdapter.add("Matale");
+        dAdapter.add("Kandy");
+        dAdapter.add("Nuwara Eliya");
+        dAdapter.add("Kegalle");
+
+        dAdapter.add("Trincomalee");
+        dAdapter.add("Batticaloa");
+        dAdapter.add("Ampara");
+        dAdapter.add("Badulla");
+        dAdapter.add("Monaragala");
+        dAdapter.add("Hambantota");
+        dAdapter.add("Matara");
+        dAdapter.add("Galle");
     }
 
 
@@ -170,6 +243,9 @@ public class editsalondetails extends AppCompatActivity {
                 address.setText(company.getAddress());
                 phone.setText(company.getPhone());
 
+
+                featuresSelection.setSelection(featuresAdapter.getPosition(company.getCategory()));
+                dist.setSelection(dAdapter.getPosition(company.getDistrict()));
 
                 if(company.getImg() != null){
                     storageReference.child(company.getImg()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

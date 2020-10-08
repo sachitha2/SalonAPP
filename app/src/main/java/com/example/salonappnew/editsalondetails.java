@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.example.salonappnew.common.Common;
 import com.example.salonappnew.models.Company;
 import com.example.salonappnew.models.Customer;
 import com.example.salonappnew.ui.Dashboard;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,11 +33,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class editsalondetails extends AppCompatActivity {
 
     //Find profile data start
-    static ImageView imgPropic;
+    static ImageView imgPropic,imgPropicEdit;
     static TextView txtProfileName;
     static String type;
     //Find profile data end
@@ -43,6 +49,8 @@ public class editsalondetails extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     private DatabaseReference mFDb;
     private FirebaseDatabase mFirebaseInstant;
+    private static FirebaseStorage storage;
+    private static StorageReference storageReference;
     EditText name;
     EditText address;
     EditText phone;
@@ -56,9 +64,13 @@ public class editsalondetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editsalondetails);
 
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
 
         //Find profile data start
         imgPropic = findViewById(R.id.imgProfile);
+        imgPropicEdit = findViewById(R.id.imgPropicEdit);
         txtProfileName = findViewById(R.id.txtProfileName);
 
         Intent intent = getIntent();
@@ -130,6 +142,25 @@ public class editsalondetails extends AppCompatActivity {
                 address.setText(company.getAddress());
                 phone.setText(company.getPhone());
 
+
+                if(company.getImg() != null){
+                    storageReference.child(company.getImg()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            // Got the download URL for 'users/me/profile.png'
+                            Log.d("Data",""+uri.toString());
+
+
+                            Picasso.get().load(uri).into(imgPropicEdit);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle any errors
+                            Log.d("Data","Error in downloading image data");
+                        }
+                    });
+                }
 
 
                 //TODO interface ui error ->not mine

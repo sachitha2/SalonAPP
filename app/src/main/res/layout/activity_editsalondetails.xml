@@ -61,6 +61,27 @@
                     android:hint="Salon Name"
                     android:inputType="textPersonName" />
 
+
+                <Spinner
+                    android:id="@+id/Category"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/Category"
+                    android:spinnerMode="dialog" />
+
+                <Spinner
+                    android:id="@+id/spinnerDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/Category"
+                    android:spinnerMode="dialog" />
+
                 <EditText
                     android:id="@+id/txtAddress"
                     android:layout_width="match_parent"
@@ -77,6 +98,29 @@
                     android:ems="10"
                     android:hint="Phone Number"
                     android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/txtPassOld"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Old Password"
+                    android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/txtPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/txtPassConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Re Type Password"
+                    android:inputType="textPassword" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

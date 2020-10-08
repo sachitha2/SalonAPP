@@ -21,7 +21,6 @@ tools:context=".editcustomer">
         android:layout_height="match_parent">
 
 
-
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="109dp"
@@ -29,21 +28,20 @@ tools:context=".editcustomer">
             android:text="delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.741"
+            app:layout_constraintHorizontal_bias="0.721"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.845" />
+            app:layout_constraintVertical_bias="0.973" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="164dp"
-            android:layout_height="171dp"
+            android:id="@+id/imgPropicEdit"
+            android:layout_width="109dp"
+            android:layout_height="94dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.326"
+            app:layout_constraintVertical_bias="0.089"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -60,11 +58,11 @@ tools:context=".editcustomer">
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintVertical_bias="0.006" />
 
         <LinearLayout
             android:layout_width="347dp"
-            android:layout_height="163dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,20 +79,73 @@ tools:context=".editcustomer">
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/txtAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Adress"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/txtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone Number"
-                android:inputType="textPersonName" />
+                android:hint="Phone number"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/txtPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/txtPassConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Re Type Password"
+                android:inputType="textPassword" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textColor="#090909"
+                android:textSize="18sp" />
+            <RadioGroup
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.353"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.609"
+                android:id="@+id/gender"
+                >
+                <RadioButton
+                    android:id="@+id/rMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+            </RadioGroup>
+            <Button
+                android:id="@+id/btn_img"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:text="Change Image" />
         </LinearLayout>
 
         <Button
@@ -104,10 +155,10 @@ tools:context=".editcustomer">
             android:text="edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.261"
+            app:layout_constraintHorizontal_bias="0.291"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.845" />
+            app:layout_constraintVertical_bias="0.973" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

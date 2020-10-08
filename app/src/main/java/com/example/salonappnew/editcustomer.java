@@ -12,11 +12,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,13 +57,22 @@ public class editcustomer extends AppCompatActivity {
     EditText txtEmail;
     EditText phone;
 
-    Button edit,del;
+    Button edit,del,changeImage;
 
     String key;
+
+
+    RadioButton gMale;
+    RadioButton gFmale;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editcustomer);
+
+        gMale = findViewById(R.id.rMale);
+        gFmale = findViewById(R.id.rFemale);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -119,10 +130,33 @@ public class editcustomer extends AppCompatActivity {
 
         searchFireStore();
 
+        changeImage = (Button)findViewById(R.id.btn_img);
+
+        changeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
     }
 
 
 
+
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            imgPropicEdit.setImageURI(imageUri);
+        }
+    }
 
     private void searchFireStore(){
         Query data = mFDb.child("customer").orderByChild("email").startAt(mFirebaseAuth.getCurrentUser().getEmail())
@@ -146,6 +180,14 @@ public class editcustomer extends AppCompatActivity {
                 name.setText(customer.getName());
                 txtEmail.setText(customer.getEmail());
                 phone.setText(customer.getPhone());
+
+                if(customer.getGender().equals("Male")){
+                    gMale.setChecked(true);
+                    gFmale.setChecked(false);
+                }else{
+                    gMale.setChecked(false);
+                    gFmale.setChecked(true);
+                }
 
 
                 if(customer.getImgUrl() != null){
